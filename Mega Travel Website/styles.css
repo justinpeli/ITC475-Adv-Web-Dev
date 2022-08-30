@@ -46,12 +46,20 @@
 
 ul {
     list-style: none;
-    color: white;
 }
 
 ul li{
     float: left;
     padding-right: 20px;
+}
+
+ul li a{
+    color: white;
+    text-decoration: none;
+}
+
+ul li a:hover{
+    color:#ffa500;
 }
 
 h1{
@@ -70,10 +78,25 @@ h1{
     border-style: solid;
     margin: 10px;
     padding: 10px;
+    max-width: 100%;
+    transition: background-color 2s ease-out 100ms
+}
+
+.travel-locations:hover{
+    background-color: black;
+}
+
+.travel-locations:hover .resort-text{
+    color: white;
+}
+
+.travel-locations:hover .price-you-pay{
+    color: white;
 }
 
 .resort-text{
     margin-top: 30px;
+    transition: color 1s ease-out 100ms
 }
 
 .original-price-text{
@@ -86,6 +109,11 @@ h1{
     color: green;
 }
 
+.price-you-pay{
+    margin-bottom: 5px;
+    transition: color 1s ease-out 100ms
+}
+
 .locations-img{
    max-width: 100%;
    height: auto;
@@ -93,7 +121,7 @@ h1{
 
 .footer{
     padding: 10px 30px;
-    height: 125px;
-    background-color: yellow;
+    height: 75px;
+    background-color: black;
     color: white;
 }
