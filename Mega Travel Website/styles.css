@@ -1,0 +1,127 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family:Helvetica;
+}
+
+.wrapper{
+    width: 100%;
+    height: 100%;
+}
+
+.header-bar{
+    width: 100%;
+    height: 20%;
+    background-color: #add8e6;
+    position: relative;
+    left: 0;
+    top: 0;
+    right: 0;
+}
+
+.mega-travel-logo-img{
+    width: 300;
+    height: 150;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header-separator{
+    width: 100%;
+    height: 20px;
+    position: relative;
+    background-color: #d3d3d3;
+}
+
+.navigation-bar{
+    margin-top: 20px;
+    width: 100%;
+    height:50px;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+ul {
+    list-style: none;
+}
+
+ul li{
+    float: left;
+    padding-right: 20px;
+}
+
+ul li a{
+    color: white;
+    text-decoration: none;
+}
+
+ul li a:hover{
+    color:#ffa500;
+}
+
+h1{
+    margin-bottom: 10px; 
+    font-size: 16pt;
+}
+
+.information-div{
+    padding: 30px 10px 0px;
+    font-family:Helvetica;
+    margin-bottom: 35px;
+}
+
+.travel-locations{
+    height: 80%;
+    border-style: solid;
+    margin: 10px;
+    padding: 10px;
+    max-width: 100%;
+    transition: background-color 2s ease-out 100ms
+}
+
+.travel-locations:hover{
+    background-color: black;
+}
+
+.travel-locations:hover .resort-text{
+    color: white;
+}
+
+.travel-locations:hover .price-you-pay{
+    color: white;
+}
+
+.resort-text{
+    margin-top: 30px;
+    transition: color 1s ease-out 100ms
+}
+
+.original-price-text{
+    font-size: 11pt;
+    color: lightgray;
+    margin-bottom: 3px;
+}
+
+.saving-price-text{
+    color: green;
+}
+
+.price-you-pay{
+    margin-bottom: 5px;
+    transition: color 1s ease-out 100ms
+}
+
+.locations-img{
+   max-width: 100%;
+   height: auto;
+}
+
+.footer{
+    padding: 10px 30px;
+    height: 75px;
+    background-color: black;
+    color: white;
+}
