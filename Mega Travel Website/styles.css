@@ -44,22 +44,19 @@
     justify-content: center;
 }
 
-ul {
-    list-style: none;
-}
-
-ul li{
-    float: left;
-    padding-right: 20px;
-}
-
-ul li a{
+.links-text{
+    margin-right: 30px;
+    text-decoration: none;
     color: white;
     text-decoration: none;
 }
 
-ul li a:hover{
-    color:#ffa500;
+.links-text:hover{
+    color: #ffa500;
+}
+
+a{
+    text-decoration: none;
 }
 
 h1{
@@ -136,6 +133,10 @@ h1{
     color: white;
 }
 
+.about-us-div{
+    width: 100%;
+}
+
 @media only screen and (min-width: 510px) and (max-width: 1024px){
     .travel-locations{
         height: auto;
@@ -187,13 +188,25 @@ h1{
         margin-top: 10px;
         background-color: white;
     }
-
-    ul li a{
+    .links-text{
+        margin-right: 30px;
+        text-decoration: none;
         color: black;
+        text-decoration: none;
+    }
+    
+    .links-text:hover{
+        color: #C00000;
+        position: relative;
+        top: -10px;
+    }
+    
+    a{
+        text-decoration: none;
     }
 
-    ul li a:hover{
-        color:red;
+    .about-us-div{
+        width: 75%;
     }
 
 }
@@ -253,11 +266,26 @@ h1{
         background-color: white;
     }
 
-    ul li a{
+    .links-text{
+        margin-right: 30px;
+        text-decoration: none;
         color: black;
+        text-decoration: none;
+        animation-duration: 2s;
+    }
+    
+    .links-text:hover{
+        color: #C00000;
+        position: relative;
+        top: -10px;
+    }
+    
+    a{
+        text-decoration: none;
     }
 
-    ul li a:hover{
-        color:red;
+    .about-us-div{
+        width: 50%;
     }
+
 }
