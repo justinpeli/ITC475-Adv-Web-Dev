@@ -77,7 +77,7 @@ h1{
 
 
 .travel-locations{
-    height: 80%;
+    height: 65%;
     margin: 10 10;
     border-style: solid;
     padding: 10px;
@@ -137,10 +137,132 @@ h1{
     width: 100%;
 }
 
-@media only screen and (min-width: 510px) and (max-width: 1024px){
+@media only screen and (min-width: 360px) and (max-width: 389px){
+    .travel-locations{
+        height: 65%;
+        margin: 10 10;
+        border-style: solid;
+        padding: 10px;
+        max-width: 100%;
+        text-align: left;
+        transition: background-color 2s ease-out 100ms;
+    }
+}
+
+@media only screen and (min-width: 390px) and (max-width: 413px){
+    .travel-locations{
+        height: 55%;
+        margin: 10 10;
+        border-style: solid;
+        padding: 10px;
+        max-width: 100%;
+        text-align: left;
+        transition: background-color 2s ease-out 100ms;
+    }
+}
+
+@media only screen and (min-width: 414px) and (max-width: 539px){
+    .travel-locations{
+        height: 55%;
+        margin: 10 10;
+        border-style: solid;
+        padding: 10px;
+        max-width: 100%;
+        text-align: left;
+        transition: background-color 2s ease-out 100ms;
+    }
+}
+
+@media only screen and (min-width: 540px) and (max-width: 760px){
+    .travel-locations{
+        height: 81%;
+        margin: 10 10;
+        border-style: solid;
+        padding: 10px;
+        max-width: 100%;
+        text-align: left;
+        transition: background-color 2s ease-out 100ms;
+    }
+}
+
+@media only screen and (min-width: 760px) and (max-width: 910px){
     .travel-locations{
         height: auto;
-        height: 50%;
+        height: 33%;
+        border-style: solid;
+        margin: auto;
+        width: auto;
+        padding: 0.6%;
+        max-width: 21%;
+        transition: background-color 2s ease-out 100ms;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .locations-img{
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    .footer{
+        width: 100%;
+        box-sizing: border-box;
+        height: 100px;
+        padding: 10px;
+        background-color: black;
+        color: white;
+    }
+
+    .header-bar{
+        width: 100%;
+        height: 20%;
+        background-color: #add8e6;
+        position: relative;
+        left: 0;
+        top: 0;
+        right: 0;
+    }
+
+    .mega-travel-logo-img{
+        width: 300;
+        height: 150;
+        position:absolute;
+    }
+
+    .information-div{
+        width: 75%;
+    }
+
+    .navigation-bar{
+        margin-top: 10px;
+        background-color: white;
+    }
+    .links-text{
+        margin-right: 30px;
+        text-decoration: none;
+        color: black;
+        text-decoration: none;
+    }
+    
+    .links-text:hover{
+        color: #C00000;
+        position: relative;
+        top: -10px;
+    }
+    
+    a{
+        text-decoration: none;
+    }
+
+    .about-us-div{
+        width: 75%;
+    }
+
+}
+
+@media only screen and (min-width: 911px) and (max-width: 1023px){
+    .travel-locations{
+        height: auto;
+        height: 27%;
         border-style: solid;
         margin: auto;
         width: auto;
