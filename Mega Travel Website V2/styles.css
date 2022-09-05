@@ -98,11 +98,14 @@ a{
 
 h1{
     color: white;
+    margin-bottom: 10px; 
+    font-size: 16pt;
 }
 
 #footer{
-    margin-top: 10px;
     background-color: black;
+    padding-top: 0;
+    padding-bottom: 0px;
 }
 
 .mega-travel-logo-img{
@@ -119,17 +122,24 @@ h1{
 
  .resort-text{
     color:black;
-    transition: color 1s ease-out 100ms
+    transition: color 1s ease-out 100ms;
+    margin: 10 0 0;
  }
 
  .saving-price-text{
     color: green;
+    margin: 0;
 }
 
 .original-price-text{
     font-size: 11pt;
     color: lightgray;
-    margin-bottom: 3px;
+    margin-bottom: -10px;
+}
+
+.price-you-pay{
+    margin-bottom: 5px;
+    transition: color 1s ease-out 100ms
 }
 
 .about-us-div{
