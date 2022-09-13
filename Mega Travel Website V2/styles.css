@@ -60,12 +60,15 @@ html, body {
 .links-text{
     margin-right: 30px;
     color: black;
+    transition: color 800ms ease-out 100ms, transform 200ms ease-in-out;
+    display: inline-block;
 }
 
 .links-text:hover{
     color: #C00000;
-    position: relative;
-    top: -10px;
+    transform: translate(0px, -6px);
+    /*position: relative;
+    top: -6px;*/
 }
 
 a{
@@ -133,7 +136,7 @@ h1{
 
 .original-price-text{
     font-size: 11pt;
-    color: lightgray;
+    color: gray;
     margin-bottom: -10px;
 }
 
@@ -175,9 +178,11 @@ h1{
     .links-text:hover{
         color: #ffa500;
         position: relative;
+        transform: translate(0px, 0px);
         top: 0;
     }
     .links-text{
+        transition: color 0s ease-in-out, transform 0s ease-in-out;
         color: white;
     }
 
