@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
+        <script src="agentContact.js"></script>
         <header>
             <img src="site files/mega travel logo.png" alt="Mega Travel Logo" 
             class = "mega-travel-logo-img">
@@ -26,6 +27,81 @@
             <p >We would love to know more about your travel plans. Please fill out the
                 contact form to get in touch with a travel agent.</p>
         </section>
+        <form method="post" id="contact-agent-form">
+            <h2 style="color: #0E1445;">Contact an Agent</h2>
+            <span id="no-location-error"></span>
+            <hr>
+            <section class="name-information">
+                <p class="input-label">First Name:</p>
+                <input type="text" class="text-input">
+                <p class="input-label">Last Name:</p>
+                <input type="text" class="text-input">
+            </section>
+            <section class="email-information">
+                <p class="input-label">Email:</p>
+                <input type="text" class="text-input">
+            </section>
+            <section class="phone-information">
+                <p class="input-label">Phone Number:</p>
+                <input type="text" class="text-input">
+            </section>
+            <section class="number-of-people-information">
+                <p class="input-label">Number of Adults Traveling:</p>
+                <select name="number-of-adults" id="number-of-adults">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+                <p class="input-label">Number of Kids Traveling:</p>
+                <select name="number-of-kids" id="number-of-kids">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </section>
+            <section class="date-information">
+                <p class="input-label">Select Trip Date:</p>
+                <select name="date-selection" id="date-selection" onchange="updateDaySelecitons();">
+                    <option value="other">-- Select a Month --</option>
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                </select>
+                <select name="day-selection" id="day-selection"></select>
+            </section>
+            <p id="selected-location-text" class="input-label"></p>
+            <script>
+                createActiviitesList();
+                addNoLocationErrorMessage();
+            </script>
+            <input type="submit" value="Submit Form" class="button" style="margin: 10px 0px 10px;">
+            <input type="submit" value = "Clear" class = "button">
+        </form>
         <div class="row">
             <footer>
                 <p style="color: white;">Copyright Protected. All rights reserved.

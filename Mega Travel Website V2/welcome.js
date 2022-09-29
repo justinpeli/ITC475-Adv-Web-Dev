@@ -3,15 +3,6 @@ let style = document.createElement("style");
 
 sunOrMoonIcon.id = "sun-moon-icon-id";
 
-style.textContent = `
-    #sun-moon-icon-id{
-        height: 1.5em;
-        width: 1.5em;
-    }
-`;
-
-//document.head.appendChild(style);
-
 getTimeAndDisplayGreeting();
 
 function getTimeAndDisplayGreeting(){
@@ -23,15 +14,12 @@ function getTimeAndDisplayGreeting(){
 
     // set the greeting message
     if(currentHour < 12){
-        console.log("Good Morning!");
         welcomeText = "Good Morning!";
     }
     else if(currentHour >= 12 && currentHour <= 17){
-        console.log("Good Afternoon!");
         welcomeText = "Good Afternoon!";
     }
     else if(currentHour > 17){
-        console.log("Good Evening!");
         welcomeText = "Good Evening!";
     }
     
@@ -46,5 +34,6 @@ function getTimeAndDisplayGreeting(){
     document.getElementById("sun-moon-span").appendChild(sunOrMoonIcon);
     document.getElementById("welcome-text-bold").innerHTML = welcomeText;
     document.getElementById("time-text-span").innerHTML = currentTime;
+    // repeat this function every second
     setInterval(getTimeAndDisplayGreeting, 1000);
 }

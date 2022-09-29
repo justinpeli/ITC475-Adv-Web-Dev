@@ -1,5 +1,6 @@
 *{
     box-sizing: border-box;
+    text-decoration: none;
 }
 html, body {
     font-family:Helvetica;
@@ -88,9 +89,6 @@ nav{
     top: -6px;*/
 }
 
-a{
-    text-decoration: none;
-}
 
 #information-div{
     width: 50%;
@@ -101,6 +99,7 @@ a{
     background-color: white;
     border-style: solid;
     transition: background-color 2s ease-out 100ms;
+    text-decoration: none;
     flex:1;
 }
 
@@ -126,7 +125,7 @@ h1{
 footer{
     width: 100%;
     background-color: black;
-    padding: 0px 20px 0px;
+    padding: 5px 20px 5px;
 }
 
 .mega-travel-logo-img{
@@ -177,6 +176,70 @@ footer{
 #sun-moon-icon-id{
     height: 1.75em;
     width: 1.75em;
+}
+
+#maldives-contact-div{
+    height: 100px;
+    width: 100px;
+    background-color: yellow;
+}
+
+#location-activity-div{
+    height: 100px;
+    width: 100px;
+    background-color: yellow;
+}
+
+form {
+    margin: 0px 20px 20px;
+    padding: 0px 20px 10px;
+    border-style: solid;
+    border-color: black;
+    border-width: 3px;
+    background-color: #F0EFF2;
+}
+
+#destined-location-title{
+    display: block;
+    text-decoration: underline;
+    color: #0E1445;
+    font-size: 14pt;
+    margin: 5px 0px 5px;
+}
+
+#activity-check-box-text{
+    display: inline-block;
+}
+
+#activity-check-box{
+    display: inline-block;
+}
+
+.input-label{
+    margin-bottom: 5px;
+}
+
+.text-input{
+    width: 300px;
+    height: 30px;
+    font-size: 14pt;
+}
+
+select{
+    height: 25px;
+}
+
+#no-location-error{
+    font-style: italic;
+    color: red;
+}
+
+.button{
+    width: 150px;
+    height: 40px;
+    font-size: 12pt;
+    background-color: #828285;
+    color: white;
 }
 
 @media only screen and (max-width: 768px) {
@@ -233,5 +296,20 @@ footer{
     .agent-contact-div{
         padding-left: 10px;
         padding-right: 10px;
+    }
+    form{
+        margin: 0px 10px 20px;
+    }
+    .text-input{
+        width: 100%;
+        height: 30px;
+    }
+    select{
+        height: 30px;
+    }
+    .button{
+        width: 100%;
+        height: 50px;
+        font-size: 20pt;
     }
 }

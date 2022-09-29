@@ -35,7 +35,7 @@
             </div>
         </section>
         <div class="row" style="padding: 1.33%;">
-            <div class="col-3" id="travel-locations-block" style="margin-right: 1.33%;">
+            <div class="col-3" id="travel-locations-block" style="margin-right: 1.33%;" onclick="redirectToContactForm('maldives')">
                 <div style="text-align: center;">
                     <img src="site files/maldives.PNG" alt="Maldive Beach" class="locations-img">
                 </div>
@@ -44,7 +44,7 @@
                 <p class="price-you-pay">Price you pay <b><u>$999.99</u></b></p>
                 <p class="saving-price-text">You're saving $801</p>
             </div>
-            <div class="col-3" id="travel-locations-block" style="margin-right: 1.33%;">
+            <div class="col-3" id="travel-locations-block" style="margin-right: 1.33%;" onclick="redirectToContactForm('mexico')">
                 <div style="text-align: center;">
                     <img src="site files/mexico.PNG" alt="Mexico Resort" class="locations-img">
                 </div>
@@ -53,7 +53,7 @@
                 <p class="price-you-pay">Price you pay <b><u>$2199.99</u></b></p>
                 <p class="saving-price-text">You're saving $800</p>
             </div>
-            <div class="col-3" id="travel-locations-block" style="margin-right: 1.33%;">
+            <div class="col-3" id="travel-locations-block" style="margin-right: 1.33%;" onclick="redirectToContactForm('new zealand')">
                 <div style="text-align: center;">
                     <img src="site files/newzealand.PNG" alt="New Zealand Resort" class="locations-img">
                 </div>
@@ -62,7 +62,7 @@
                 <p class="price-you-pay">Price you pay <b><u>$2100.00</u></b></p>
                 <p class="saving-price-text">You're saving $399</p>
             </div>
-            <div class="col-3" id="travel-locations-block">
+            <div class="col-3" id="travel-locations-block" onclick="redirectToContactForm('italy')">
                 <div style="text-align: center;">
                     <img src="site files/venice.PNG" alt="Venice Resort" class="locations-img">
                 </div>
@@ -82,5 +82,11 @@
             </footer>
         </div>
         <script src="welcome.js"></script>
+        <script>
+            function redirectToContactForm (location){
+                sessionStorage.setItem("location", location);
+                window.location.href = "agent.html"
+            }
+        </script>
     </body>
 </html>
