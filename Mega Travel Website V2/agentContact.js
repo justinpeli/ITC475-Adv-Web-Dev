@@ -1,41 +1,3 @@
-function updateDaySelecitons(){
-    console.log("changed")
-    let monthSelectionBox = document.getElementById("date-selection"); 
-    let monthSelected = monthSelectionBox.options[monthSelectionBox.selectedIndex].value;
-    switch(monthSelected){
-        case "January":
-        case "March":
-        case "May":
-        case "July":
-        case "August":
-        case"October":
-        case "December":
-            createNumberOfDays(31);
-            break;
-        case "February":
-            createNumberOfDays(28);
-            break;
-        case "April":
-        case "June":
-        case "September":
-        case "November":
-            createNumberOfDays(30);
-            break;
-    }
-}
-
-function createNumberOfDays(numberOfDays){
-    let daySelectionElement = document.getElementById("day-selection");
-    daySelectionElement.options.length = 0;
-    //console.log("removed items");
-    for (let i = 1; i <= numberOfDays; i++){
-        let dayOption = document.createElement("option");
-        dayOption.value = i;
-        dayOption.innerHTML = i;
-        daySelectionElement.appendChild(dayOption);
-    }
-}
-
 function createActiviitesList(){
     let locationFromKey = sessionStorage.getItem("location");
 
@@ -101,6 +63,7 @@ function setActivities(locationString){
 
         newActivityString.innerHTML = activities[i];
         newActivityCheckBox.setAttribute("type", "checkbox");
+        newActivityCheckBox.required = true;
 
         newActivityCheckBox.id = "activity-check-box";
         newActivityString.id = "activity-check-box-text";

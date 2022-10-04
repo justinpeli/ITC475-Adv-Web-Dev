@@ -32,21 +32,22 @@
             <span id="no-location-error"></span>
             <hr>
             <section class="name-information">
-                <p class="input-label">First Name:</p>
-                <input type="text" class="text-input">
-                <p class="input-label">Last Name:</p>
-                <input type="text" class="text-input">
+                <label class="input-label">First Name:</label>
+                <input type="text" class="text-input" required>
+                <label class="input-label">Last Name:</label>
+                <input type="text" class="text-input" required>
             </section>
             <section class="email-information">
-                <p class="input-label">Email:</p>
-                <input type="text" class="text-input">
+                <label class="input-label">Email:</label>
+                <input type="text" class="text-input" required>
             </section>
             <section class="phone-information">
-                <p class="input-label">Phone Number:</p>
-                <input type="text" class="text-input">
+                <label class="input-label">Phone Number: <em>xxx-xxx-xxxx</em></label>
+                <input type="tel" class="text-input" 
+                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
             </section>
             <section class="number-of-people-information">
-                <p class="input-label">Number of Adults Traveling:</p>
+                <label class="input-label">Number of Adults Traveling:</label>
                 <select name="number-of-adults" id="number-of-adults">
                     <option value="0">0</option>
                     <option value="1">1</option>
@@ -60,7 +61,7 @@
                     <option value="9">9</option>
                     <option value="10">10</option>
                 </select>
-                <p class="input-label">Number of Kids Traveling:</p>
+                <label class="input-label">Number of Kids Traveling:</label>
                 <select name="number-of-kids" id="number-of-kids">
                     <option value="0">0</option>
                     <option value="1">1</option>
@@ -75,32 +76,16 @@
                     <option value="10">10</option>
                 </select>
             </section>
-            <section class="date-information">
-                <p class="input-label">Select Trip Date:</p>
-                <select name="date-selection" id="date-selection" onchange="updateDaySelecitons();">
-                    <option value="other">-- Select a Month --</option>
-                    <option value="January">January</option>
-                    <option value="February">February</option>
-                    <option value="March">March</option>
-                    <option value="April">April</option>
-                    <option value="May">May</option>
-                    <option value="June">June</option>
-                    <option value="July">July</option>
-                    <option value="August">August</option>
-                    <option value="September">September</option>
-                    <option value="October">October</option>
-                    <option value="November">November</option>
-                    <option value="December">December</option>
-                </select>
-                <select name="day-selection" id="day-selection"></select>
+                <label class="input-label">Trip Start Date:</label>
+                <input type="date" required>
             </section>
-            <p id="selected-location-text" class="input-label"></p>
+            <label id="selected-location-text" class="input-label"></label>
             <script>
                 createActiviitesList();
                 addNoLocationErrorMessage();
             </script>
             <input type="submit" value="Submit Form" class="button" style="margin: 10px 0px 10px;">
-            <input type="submit" value = "Clear" class = "button">
+            <input type="reset" value = "CLEAR" class = "button">
         </form>
         <div class="row">
             <footer>
