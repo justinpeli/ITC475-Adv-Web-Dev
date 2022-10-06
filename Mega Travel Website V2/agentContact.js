@@ -63,14 +63,17 @@ function setActivities(locationString){
                 break;
     }
 
-    let destinedLocationTitle = document.createElement("b");
-    destinedLocationTitle.id = "destined-location-title";
-    destinedLocationTitle.innerText = title;
-    document.getElementById("location-information").appendChild(destinedLocationTitle);
+    //let destinedLocationTitle = document.createElement("b");
+    //destinedLocationTitle.id = "destined-location-title";
+    //destinedLocationTitle.innerText = title;
+    //document.getElementById("location-information").appendChild(destinedLocationTitle);
+
+    titleElement.innerHTML = title;
 
     for(let i = 0; i < activities.length; i++){
-        let newActivityString = document.createElement("p");
+        let newActivityString = document.createElement("label");
         let newActivityCheckBox = document.createElement("INPUT");
+        let lineBreak = document.createElement("br");
 
         newActivityString.innerHTML = activities[i];
         newActivityCheckBox.setAttribute("type", "checkbox");
@@ -78,11 +81,12 @@ function setActivities(locationString){
 
         newActivityCheckBox.id = "activity-check-box";
         newActivityString.id = "activity-check-box-text";
+        lineBreak.id = "line-break";
 
         
-        document.getElementById("location-information").appendChild(newActivityCheckBox);
-        document.getElementById("location-information").appendChild(newActivityString);
-        document.getElementById("location-information").appendChild(document.createElement("br"));
+        document.getElementById("activities-div").appendChild(newActivityCheckBox);
+        document.getElementById("activities-div").appendChild(newActivityString);
+        document.getElementById("activities-div").appendChild(lineBreak);
     }
 
 }
@@ -97,11 +101,13 @@ function getParameter(){
 function clearAllActivities(){
     let checkBoxes = document.querySelectorAll("[id='activity-check-box']");
     let checkBoxText = document.querySelectorAll("[id='activity-check-box-text']");
-    let title = document.getElementById("destined-location-title");
+    //let title = document.getElementById("destined-location-title");
+    let lineBreak = document.querySelectorAll("[id='line-break']");
 
     for (let i = 0; i < checkBoxes.length; i++){
         checkBoxes[i].remove();
         checkBoxText[i].remove();
+        lineBreak[i].remove();
     }
-    title.remove();
+    //title.remove();
 }
