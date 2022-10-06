@@ -79,10 +79,19 @@
                 <label class="input-label">Trip Start Date:</label>
                 <input type="date" required>
             </section>
-            <label id="selected-location-text" class="input-label"></label>
+            <section id="location-information">
+                <label for="select-location" class="input-label">Select Location:</label>
+                <select name="select-location" id="select-location" onchange="getParameter();" required>
+                    <option value="default" selected disabled>--Select A Location--</option>
+                    <option value="maldives">Maldives, South Asia</option>
+                    <option value="mexico">Cancun, Mexico</option>
+                    <option value="new zealand">New Zealand</option>
+                    <option value="italy">Venice, Italy</option>
+                </select>
+            </section>
             <script>
-                createActiviitesList();
-                addNoLocationErrorMessage();
+                //createActiviitesList();
+                //addNoLocationErrorMessage();
             </script>
             <input type="submit" value="Submit Form" class="button" style="margin: 10px 0px 10px;">
             <input type="reset" value = "CLEAR" class = "button">

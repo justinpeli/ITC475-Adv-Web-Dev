@@ -1,3 +1,4 @@
+/*
 function createActiviitesList(){
     let locationFromKey = sessionStorage.getItem("location");
 
@@ -8,7 +9,9 @@ function createActiviitesList(){
         }
 
 }
+*/
 
+/*
 function addNoLocationErrorMessage(){
 
     let locaiton = document.getElementById("destined-location-title");
@@ -24,10 +27,18 @@ function addNoLocationErrorMessage(){
         selectedLocationText.style.marginTop = "20px";
     }
 }
+*/
 
 function setActivities(locationString){
+
+    let titleElement = document.getElementById("destined-location-title");
+
     let title = "";
     let activities = null;
+
+    if(titleElement != null){
+        clearAllActivities();
+    }
 
     switch(locationString){
         case "maldives":
@@ -47,15 +58,15 @@ function setActivities(locationString){
             activities = ["Museums", "Theatre", "Parks and Recreation", "City Tours"];
                 break;
         default:
-            title = "Please Select a Location on the Home Scren!"
-            activities = null;
+            title = "Please Select a Location!"
+            activities = [];
                 break;
     }
 
-    const destinedLocationTitle = document.createElement("b");
+    let destinedLocationTitle = document.createElement("b");
     destinedLocationTitle.id = "destined-location-title";
     destinedLocationTitle.innerText = title;
-    document.getElementById("contact-agent-form").appendChild(destinedLocationTitle);
+    document.getElementById("location-information").appendChild(destinedLocationTitle);
 
     for(let i = 0; i < activities.length; i++){
         let newActivityString = document.createElement("p");
@@ -69,8 +80,28 @@ function setActivities(locationString){
         newActivityString.id = "activity-check-box-text";
 
         
-        document.getElementById("contact-agent-form").appendChild(newActivityCheckBox);
-        document.getElementById("contact-agent-form").appendChild(newActivityString);
-        document.getElementById("contact-agent-form").appendChild(document.createElement("br"));
+        document.getElementById("location-information").appendChild(newActivityCheckBox);
+        document.getElementById("location-information").appendChild(newActivityString);
+        document.getElementById("location-information").appendChild(document.createElement("br"));
     }
+
+}
+
+function getParameter(){
+    let locationSelect = document.getElementById("select-location");
+    let value = locationSelect.options[locationSelect.selectedIndex].value;
+    setActivities(value);
+
+}
+
+function clearAllActivities(){
+    let checkBoxes = document.querySelectorAll("[id='activity-check-box']");
+    let checkBoxText = document.querySelectorAll("[id='activity-check-box-text']");
+    let title = document.getElementById("destined-location-title");
+
+    for (let i = 0; i < checkBoxes.length; i++){
+        checkBoxes[i].remove();
+        checkBoxText[i].remove();
+    }
+    title.remove();
 }
