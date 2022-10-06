@@ -1,34 +1,3 @@
-/*
-function createActiviitesList(){
-    let locationFromKey = sessionStorage.getItem("location");
-
-        if(locationFromKey != null){
-            console.log("redirected correctly");
-            console.log(locationFromKey);
-            setActivities(locationFromKey);
-        }
-
-}
-*/
-
-/*
-function addNoLocationErrorMessage(){
-
-    let locaiton = document.getElementById("destined-location-title");
-    let locationErrorSpan = document.getElementById("no-location-error");
-    let selectedLocationText = document.getElementById("selected-location-text");
-
-    if(locaiton == null){
-        console.log("no such element");
-        locationErrorSpan.innerHTML = "Select a Location on the Home Page Before Filling Out Form"
-    } else {
-        console.log("this element exists");
-        selectedLocationText.innerHTML = "Selected Location:";
-        selectedLocationText.style.marginTop = "20px";
-    }
-}
-*/
-
 function setActivities(locationString){
 
     let titleElement = document.getElementById("destined-location-title");
@@ -63,11 +32,6 @@ function setActivities(locationString){
                 break;
     }
 
-    //let destinedLocationTitle = document.createElement("b");
-    //destinedLocationTitle.id = "destined-location-title";
-    //destinedLocationTitle.innerText = title;
-    //document.getElementById("location-information").appendChild(destinedLocationTitle);
-
     titleElement.innerHTML = title;
 
     for(let i = 0; i < activities.length; i++){
@@ -101,7 +65,6 @@ function getParameter(){
 function clearAllActivities(){
     let checkBoxes = document.querySelectorAll("[id='activity-check-box']");
     let checkBoxText = document.querySelectorAll("[id='activity-check-box-text']");
-    //let title = document.getElementById("destined-location-title");
     let lineBreak = document.querySelectorAll("[id='line-break']");
 
     for (let i = 0; i < checkBoxes.length; i++){
@@ -109,5 +72,4 @@ function clearAllActivities(){
         checkBoxText[i].remove();
         lineBreak[i].remove();
     }
-    //title.remove();
 }
