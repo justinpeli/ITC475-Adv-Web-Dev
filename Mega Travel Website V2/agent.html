@@ -32,22 +32,22 @@
             <span id="no-location-error"></span>
             <hr>
             <section class="name-information">
-                <label class="input-label">First Name:</label>
+                <label class="input-label">First Name<span style="color: red;">*</span>:</label>
                 <input type="text" class="text-input" required>
-                <label class="input-label">Last Name:</label>
+                <label class="input-label">Last Name<span style="color: red;">*</span>:</label>
                 <input type="text" class="text-input" required>
             </section>
             <section class="email-information">
-                <label class="input-label">Email:</label>
+                <label class="input-label">Email<span style="color: red;">*</span>:</label>
                 <input type="text" class="text-input" required>
             </section>
             <section class="phone-information">
-                <label class="input-label">Phone Number: <em>xxx-xxx-xxxx</em></label>
+                <label class="input-label">Phone Number: <em>xxx-xxx-xxxx</em><span style="color: red;">*</span></label>
                 <input type="tel" class="text-input" 
                 pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
             </section>
             <section class="number-of-people-information">
-                <label class="input-label">Number of Adults Traveling:</label>
+                <label class="input-label">Number of Adults Traveling<span style="color: red;">*</span>:</label>
                 <select name="number-of-adults" id="number-of-adults">
                     <option value="0">0</option>
                     <option value="1">1</option>
@@ -61,7 +61,7 @@
                     <option value="9">9</option>
                     <option value="10">10</option>
                 </select>
-                <label class="input-label">Number of Kids Traveling:</label>
+                <label class="input-label">Number of Kids Traveling<span style="color: red;">*</span>:</label>
                 <select name="number-of-kids" id="number-of-kids">
                     <option value="0">0</option>
                     <option value="1">1</option>
@@ -76,11 +76,11 @@
                     <option value="10">10</option>
                 </select>
             </section>
-                <label class="input-label">Trip Start Date:</label>
+                <label class="input-label">Trip Start Date<span style="color: red;">*</span>:</label>
                 <input type="date" required>
             </section>
             <section id="location-information">
-                <label for="select-location" class="input-label">Select Location:</label>
+                <label for="select-location" class="input-label">Select Location<span style="color: red;">*</span>:</label>
                 <select name="select-location" id="select-location" onchange="getParameter();" required>
                     <option value="" selected disabled>--Select A Location--</option>
                     <option value="maldives">Maldives, South Asia</option>
