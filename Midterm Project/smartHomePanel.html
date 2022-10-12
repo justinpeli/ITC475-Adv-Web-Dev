@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="styles.css">
+        <title>Smart Home Panel</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <script src="SmartHomePanel.js"></script>
+        <header><b>SMART HOME PANEL</b></header>
+        <div class="select-device-div" id="select-device-div">
+            <select name="select-device" id="select-device">
+                <option value="none" disabled selected>--Select A Device--</option>
+                <option value="lamp-livingroom">Living Room Lamp</option>
+                <option value="lamp-bed1">Bedroom #1 Desk Lamp</option>
+                <option value="lamp-bed2">Bedroom # 2 Floor Lamp</option>
+                <option value="fan-bathroom">Bathroom Fan</option>
+                <option value="washer">Washer</option>
+                <option value="dryer">Dryer</option>
+                <option value="front-door">Front Door</option>
+                <option value="back-door">Back Door</option>
+                <option value="garage-door">Garage Door</option>
+                <option value="fan-kitchen">Kitchen Fan</option>
+                <option value="dining-light">Dining Room Light</option>
+            </select>
+            <label for="start-time">Select a Start Time:</label>
+            <input type="time" id="start-time" required>
+            <label for="end-time">Select a End Time:</label>
+            <input type="time" id="end-time">
+            <br>
+            <button onclick="setParameters();">SUBMIT</button>
+        </div>
+    </body>
+</html>

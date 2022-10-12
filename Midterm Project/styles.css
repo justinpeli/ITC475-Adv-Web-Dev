@@ -1,0 +1,66 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-color: #6C7CE4;
+}
+
+header{
+    padding: 75px;
+    width: 100%;
+    font-size: 64pt;
+    background-color: lightblue;
+    color: purple;
+    text-align: center;
+    vertical-align: middle;
+    font-style: italic;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.select-device-div{
+    text-align: center;
+    padding: 70px;
+}
+
+select{
+    height: 50px;
+    width: 250px;
+    background-color: lightgray;
+    font-size: 14pt;
+    text-align: center;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+label{
+    display: block;
+    margin: 25px 0px 5px;
+    color: white;
+    font-size: 14pt;
+    font-style: italic;
+}
+
+input[type=time]{
+    height: 50px;
+    width: 250px;
+    text-align: center;
+    font-size: 14pt;
+}
+
+button{
+    height: 50px;
+    width: 200px;
+    background-color: lightgray;
+    margin-top: 25px;
+    font-size: 14pt;
+    font-family:Georgia, 'Times New Roman', Times, serif
+}
+
+@media only screen and (max-width: 768px) {
+    header{
+        padding: 50px;
+        font-size: 44pt;
+    }
+}
