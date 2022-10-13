@@ -1,35 +1,44 @@
-let livingRoomLampStartTime = null;
-let livingRoomLampEndTime = null;
+// OBJECT CLASS
+class HomeItem {
 
-let bedRoomDeskLampStartTime = null;
-let bedRoomDeskLampEndTime = null;
+    set setStartTime(startTime){
+        this.startTime = startTime;
+    }
 
-let bedRoomFloorLampStartTime = null;
-let bedRoomFloorLampEndTime = null;
+    set setEndTime(endTime){
+        this.endTime = endTime;
+    }
 
-let bathroomFanStartTime = null;
-let bathroomFanEndTime = null;
+    set setIsOperating(isOperating){
+        this.isOperating = isOperating;
+    }
 
-let washerStartTime = null;
-let washerEndTime = null;
+    get getStartTime(){
+        return this.startTime;
+    }
 
-let dryerStartTime = null;
-let dryerEndTime = null;
+    get getEndTime(){
+        return this.endTime;
+    }
 
-let frontDoorStartTime = null;
-let frontDoorEndTime = null;
+    get getOperatingStatus(){
+        return this.isOperating;
+    }
 
-let backDoorStartTime = null;
-let backDoorEndTIme = null;
+}
 
-let garageDoorStartTime = null;
-let garageDoorEndTime = null;
+let livingRoomLamp = new HomeItem();
+let bedroomDeskLamp = new HomeItem();
+let bedroomFloorLamp = new HomeItem();
+let bathroomFan = new HomeItem();
+let washer = new HomeItem();
+let dryer = new HomeItem();
+let frontDoor = new HomeItem();
+let backDoor = new HomeItem();
+let garageDoor = new HomeItem();
+let kitchenFan = new HomeItem();
+let diningRoomLight = new HomeItem();
 
-let kitchenFanStartTime = null;
-let kitchenFanEndTime = null;
-
-let diningRoomLightStartTime = null;
-let diningRoomLightEndTIme = null;
 
 function setParameters(){
     let selectedItemElement = document.getElementById("select-device");
@@ -41,13 +50,10 @@ function setParameters(){
     let endTime = document.getElementById("end-time").value;
 
     if (selectedItemValue != "none" && startTime != "" && endTime != ""){
-        console.log(selectedItemValue);
-        console.log("StartTime is: " + startTime);
-        console.log("EndTime is: " + endTime);
 
         if (confirm("You Selected " + selecteItemText + "!\nStart Time: " + startTime + "\nEnd Time: " + endTime)) {
 
-            setDeviceTimes(selectedItemValue, startTime, endTime);
+            setItemAttributes(selectedItemValue, startTime, endTime);
             document.getElementById("start-time").value = "";
             document.getElementById("end-time").value = "";
             document.getElementById("select-device").value = "none";
@@ -56,57 +62,125 @@ function setParameters(){
           } else {
             console.log("request canceled");
           }
-          
+
     } else {
-        alert("Please Select an Item With a Start and End Time");
+        alert("\nERROR: \n\nPLEASE SELECT AN ITEM WITH A START AND END TIME");
     }
 }
 
-function setDeviceTimes(selectedItemValue, startTime, endTime){
+function setItemAttributes(selectedItemValue, startTime, endTime){
+
     switch(selectedItemValue){
         case "lamp-livingroom":
-            livingRoomLampStartTime = startTime;
-            livingRoomLampEndTime = endTime;
+            livingRoomLamp.setStartTime = startTime;
+            livingRoomLamp.setEndTime = endTime;
+            setIfDeviceIsOperating(livingRoomLamp, startTime, endTime);
             break;
         case "lamp-bed1":
-            bedRoomDeskLampStartTime = startTime;
-            bedRoomDeskLampEndTime = endTime;
+            bedroomDeskLamp.setStartTime = startTime;
+            bedroomDeskLamp.setEndTime = endTime;
+            setIfDeviceIsOperating(bedroomDeskLamp, startTime, endTime);
             break;
         case "lamp-bed2":
-            bedRoomFloorLampStartTime = startTime;
-            bedRoomFloorLampEndTime = endTime;
+            bedroomFloorLamp.setStartTime = startTime;
+            bedroomFloorLamp.setEndTime = endTime;
+            setIfDeviceIsOperating(bedroomFloorLamp, startTime, endTime);
             break;
         case "fan-bathroom":
-            bathroomFanStartTime = startTime;
-            bathroomFanEndTime = endTime;
+            bathroomFan.setStartTime = startTime;
+            bathroomFan.setEndTime = endTime;
+            setIfDeviceIsOperating(bathroomFan, startTime, endTime);
             break;
         case "washer":
-            washerStartTime = startTime;
-            washerEndTime = endTime;
+            washer.setStartTime = startTime;
+            wahser.setEndTime = endTime;
+            setIfDeviceIsOperating(washer, startTime, endTime);
             break;
         case "dryer":
-            dryerStartTime = startTime
-            dryerEndTime = endTime;
+            dryer.setStartTime = startTime;
+            dryer.setEndTime = endTime;
+            setIfDeviceIsOperating(dryer, startTime, endTime);
         case "front-door":
-            frontDoorStartTime = startTime;
-            frontDoorEndTime = endTime;
+            frontDoor.setStartTime = startTime;
+            frontDoor.setEndTime = endTime;
+            setIfDeviceIsOperating(frontDoor, startTime, endTime);
             break;
         case "back-door":
-            backDoorStartTime = startTime;
-            backDoorEndTIme = endTime;
+            backDoor.setStartTime = startTime;
+            backDoor.setEndTime = endTime;
+            setIfDeviceIsOperating(backDoor, startTime, endTime);
             break;
         case "garage-door":
-            garageDoorStartTime = startTime;
-            garageDoorEndTime = endTime;
+            garageDoor.setStartTime = startTime;
+            garageDoor.setEndTime = endTime;
+            setIfDeviceIsOperating(garageDoor, startTime, endTime);
+            console.log("LR END TIME IS: " + livingRoomLamp.getEndTime);
             break;
         case "fan-kitchen":
-            kitchenFanStartTime = startTime;
-            kitchenFanEndTime = endTime;
+            kitchenFan.setStartTime = startTime;
+            kitchenFan.setEndTime = endTime;
+            setIfDeviceIsOperating(kitchenFan, startTime, endTime);
             break;
         case "dining-light":
-            diningRoomLightStartTime = startTime;
-            diningRoomLightEndTIme = endTime;
+            diningRoomLight.setStartTime = startTime;
+            diningRoomLight.setEndTime = endTime;
+            setIfDeviceIsOperating(diningRoomLight, startTime, endTime);
             break;
+    }
+
+    /*
+    sessionStorage.setItem("bedroomDeskLampStartTime", bedroomDeskLamp.getStartTime);
+    sessionStorage.setItem("bedroomDeskLampEndTime", bedroomDeskLamp.getEndTime);
+    sessionStorage.setItem("bedroomDeskLampOperatingStatus", bedroomDeskLamp.getOperatingStatus);
+
+    sessionStorage.setItem("bedroomFloorLampStartTime", bedroomFloorLamp.getStartTime);
+    sessionStorage.setItem("bedroomFloorLampEndTime", bedroomFloorLamp.getEndTime);
+    sessionStorage.setItem("bedroomFloorLampOperatingStatus", bedroomFloorLamp.getOperatingStatus);
+    
+    sessionStorage.setItem("bathroomFanStartTime", bathroomFan.getStartTime);
+    sessionStorage.setItem("bathroomFanEndTime", bathroomFan.getEndTime);
+    sessionStorage.setItem("bathroomFanOperatingStatus", bathroomFan.getOperatingStatus);
+
+    sessionStorage.setItem("washerStartTime", washer.getStartTime);
+    sessionStorage.setItem("washerEndTime", washer.getEndTime);
+    sessionStorage.setItem("washerOperatingStatus", washer.getOperatingStatus);
+
+    sessionStorage.setItem("dryerStartTime", dryer.getStartTime);
+    sessionStorage.setItem("dryerEndTime", dryer.getEndTime);
+    sessionStorage.setItem("dryerOperatingStatus", dryer.getOperatingStatus);
+
+    sessionStorage.setItem("frontDoorStartTime", frontDoor.getStartTime);
+    sessionStorage.setItem("frontDoorEndTime", frontDoor.getEndTime);
+    sessionStorage.setItem("frontDoorOperatingStatus", frontDoor.getOperatingStatus);
+    */
+
+    setSessionVariables(livingRoomLamp, "livingRoomLampStartTime", "livingRoomLampEndTime",
+        "livingRoomLampOperationStatus");
+
+    setSessionVariables(bedroomDeskLamp, "bedroomDeskLampStartTime", "bedroomDeskLampOperatingStatus",
+        "bedroomDeskLampOperatingStatus");
+    
+    console.log(typeof sessionStorage.getItem("bedroomDeskLampStartTime") == "undefinded")
+
+    if (typeof sessionStorage.getItem("bedroomDeskLampStartTime") === null){
+        console.log("ERRORED CORRECT")
+    }
+    else {
+        console.log("WRONG")
     }
 }
 
+function setIfDeviceIsOperating(homeItem, startTime, endTime){
+    if (startTime != "" && endTime != ""){
+        homeItem.setIsOperating = true;
+    }
+    else {
+        homeItem.setIsOperating = false;
+    }
+}
+
+function setSessionVariables(homeItem, startTimeString, endTimeString, operatingStatusString){
+    sessionStorage.setItem(startTimeString, homeItem.getStartTime);
+    sessionStorage.setItem(endTimeString, homeItem.getEndTime);
+    sessionStorage.setItem(operatingStatusString, homeItem.getOperatingStatus);
+}

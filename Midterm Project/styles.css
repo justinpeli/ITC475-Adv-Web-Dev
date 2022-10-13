@@ -9,7 +9,7 @@ body{
 }
 
 header{
-    padding: 75px;
+    padding: 50px;
     width: 100%;
     font-size: 64pt;
     background-color: lightblue;
@@ -23,6 +23,10 @@ header{
 .select-device-div{
     text-align: center;
     padding: 70px;
+}
+
+a{
+    display: block;
 }
 
 select{
@@ -55,12 +59,56 @@ button{
     background-color: lightgray;
     margin-top: 25px;
     font-size: 14pt;
+    border-radius: 12px;
     font-family:Georgia, 'Times New Roman', Times, serif
+}
+
+.header-separator{
+    padding: 20px;
+    background-color: #C2D7EC;
+    text-align: center;
+    font-size: 20pt;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.device-status-div-1{
+    background-color: lightgray;
+    padding: 10px 15px 10px;}
+
+.device-status-div-2{
+    background-color: white;
+    padding: 10px 15px 10px;
+}
+
+span{
+    font-size: 18pt;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.testing{
+    float: right;
+}
+.button-div{
+    text-align: center;
+}
+
+.run-button{
+    margin-bottom: 25px;
+    font-size: 16pt;
+    color: white;
+    background-color: #C00000;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 @media only screen and (max-width: 768px) {
     header{
         padding: 50px;
-        font-size: 44pt;
+        font-size: 30pt;
+    }
+    .header-separator{
+        font-size: 14pt;
+    }
+    span{
+        font-size: 14pt;
     }
 }
