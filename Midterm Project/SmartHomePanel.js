@@ -39,6 +39,7 @@ let garageDoor = new HomeItem();
 let kitchenFan = new HomeItem();
 let diningRoomLight = new HomeItem();
 
+checkIfDevicesAreStillOperating();
 
 function setParameters(){
     let selectedItemElement = document.getElementById("select-device");
@@ -58,7 +59,6 @@ function setParameters(){
             document.getElementById("end-time").value = "";
             document.getElementById("select-device").value = "none";
             console.log("request confirmed");
-
           } else {
             console.log("request canceled");
           }
@@ -66,6 +66,7 @@ function setParameters(){
     } else {
         alert("\nERROR: \n\nPLEASE SELECT AN ITEM WITH A START AND END TIME");
     }
+
 }
 
 function setItemAttributes(selectedItemValue, startTime, endTime){
@@ -75,6 +76,7 @@ function setItemAttributes(selectedItemValue, startTime, endTime){
             livingRoomLamp.setStartTime = startTime;
             livingRoomLamp.setEndTime = endTime;
             setIfDeviceIsOperating(livingRoomLamp, startTime, endTime);
+            console.log(livingRoomLamp + "end time is: " + endTime)
             break;
         case "lamp-bed1":
             bedroomDeskLamp.setStartTime = startTime;
@@ -93,7 +95,7 @@ function setItemAttributes(selectedItemValue, startTime, endTime){
             break;
         case "washer":
             washer.setStartTime = startTime;
-            wahser.setEndTime = endTime;
+            washer.setEndTime = endTime;
             setIfDeviceIsOperating(washer, startTime, endTime);
             break;
         case "dryer":
@@ -128,50 +130,23 @@ function setItemAttributes(selectedItemValue, startTime, endTime){
             break;
     }
 
-    /*
-    sessionStorage.setItem("bedroomDeskLampStartTime", bedroomDeskLamp.getStartTime);
-    sessionStorage.setItem("bedroomDeskLampEndTime", bedroomDeskLamp.getEndTime);
-    sessionStorage.setItem("bedroomDeskLampOperatingStatus", bedroomDeskLamp.getOperatingStatus);
+    setLocaleVariables();
 
-    sessionStorage.setItem("bedroomFloorLampStartTime", bedroomFloorLamp.getStartTime);
-    sessionStorage.setItem("bedroomFloorLampEndTime", bedroomFloorLamp.getEndTime);
-    sessionStorage.setItem("bedroomFloorLampOperatingStatus", bedroomFloorLamp.getOperatingStatus);
-    
-    sessionStorage.setItem("bathroomFanStartTime", bathroomFan.getStartTime);
-    sessionStorage.setItem("bathroomFanEndTime", bathroomFan.getEndTime);
-    sessionStorage.setItem("bathroomFanOperatingStatus", bathroomFan.getOperatingStatus);
-
-    sessionStorage.setItem("washerStartTime", washer.getStartTime);
-    sessionStorage.setItem("washerEndTime", washer.getEndTime);
-    sessionStorage.setItem("washerOperatingStatus", washer.getOperatingStatus);
-
-    sessionStorage.setItem("dryerStartTime", dryer.getStartTime);
-    sessionStorage.setItem("dryerEndTime", dryer.getEndTime);
-    sessionStorage.setItem("dryerOperatingStatus", dryer.getOperatingStatus);
-
-    sessionStorage.setItem("frontDoorStartTime", frontDoor.getStartTime);
-    sessionStorage.setItem("frontDoorEndTime", frontDoor.getEndTime);
-    sessionStorage.setItem("frontDoorOperatingStatus", frontDoor.getOperatingStatus);
-    */
-
-    setSessionVariables(livingRoomLamp, "livingRoomLampStartTime", "livingRoomLampEndTime",
-        "livingRoomLampOperationStatus");
-
-    setSessionVariables(bedroomDeskLamp, "bedroomDeskLampStartTime", "bedroomDeskLampOperatingStatus",
-        "bedroomDeskLampOperatingStatus");
-    
-    console.log(typeof sessionStorage.getItem("bedroomDeskLampStartTime") == "undefinded")
-
-    if (typeof sessionStorage.getItem("bedroomDeskLampStartTime") === null){
-        console.log("ERRORED CORRECT")
-    }
-    else {
-        console.log("WRONG")
-    }
 }
 
 function setIfDeviceIsOperating(homeItem, startTime, endTime){
-    if (startTime != "" && endTime != ""){
+
+    let currentDate = new Date();
+    let currentHour = currentDate.getHours();
+    let currentMinute = currentDate.getMinutes();
+    let currentTime = currentHour + ":" + currentMinute;
+
+    console.log("current time is: " + currentTime)
+    console.log(homeItem + "start time is: " + startTime)
+    console.log(homeItem + "end time is: " + endTime)
+
+
+    if (currentTime => startTime && currentTime <= endTime){
         homeItem.setIsOperating = true;
     }
     else {
@@ -179,8 +154,48 @@ function setIfDeviceIsOperating(homeItem, startTime, endTime){
     }
 }
 
-function setSessionVariables(homeItem, startTimeString, endTimeString, operatingStatusString){
-    sessionStorage.setItem(startTimeString, homeItem.getStartTime);
-    sessionStorage.setItem(endTimeString, homeItem.getEndTime);
-    sessionStorage.setItem(operatingStatusString, homeItem.getOperatingStatus);
+function checkIfDevicesAreStillOperating(){
+    // create an array for all items
+    // create a for loop to loop through an array containing all items
+    // check if device has a start and end time
+    // if current time is outside of start and end time set isOperating of item to false
+    // if inside start and end time frame set isOperating to true
+    // call the setLocaleVariables Method
+    // repeat every second
+
+    let homeItemsArray = [livingRoomLamp, bedroomDeskLamp, bedroomFloorLamp, bathroomFan, 
+        washer, dryer, frontDoor, backDoor, garageDoor, kitchenFan,
+        diningRoomLight];
+
+    let currentDate = new Date();
+    let currentHour = currentDate.getHours();
+    let currentMinute = currentDate.getMinutes();
+    let currentTime = currentHour + ":" + currentMinute;
+
+    for (let i = 0; i < homeItemsArray.length; i++){
+        if (homeItemsArray[i] != "undefined"){
+            if (currentTime => homeItemsArray[i].getStartTime && currentTime <= homeItemsArray[i].getEndTime){
+                homeItemsArray[i].setIsOperating = true;
+            }
+            else {
+                homeItemsArray[i].setIsOperating = false;
+            }
+        }
+    }
+    setLocaleVariables();
+    setInterval(checkIfDevicesAreStillOperating, 1000)
+}
+
+function setLocaleVariables(){
+    localStorage.setItem("livingRoomLamp", JSON.stringify(livingRoomLamp));
+    localStorage.setItem("bedroomDeskLamp", JSON.stringify(bedroomDeskLamp));
+    localStorage.setItem("bedroomFloorLamp", JSON.stringify(bedroomFloorLamp));
+    localStorage.setItem("bathroomFan", JSON.stringify(bathroomFan));
+    localStorage.setItem("washer", JSON.stringify(washer));
+    localStorage.setItem("dryer", JSON.stringify(dryer));
+    localStorage.setItem("frontDoor", JSON.stringify(frontDoor));
+    localStorage.setItem("backDoor", JSON.stringify(backDoor));
+    localStorage.setItem("garageDoor", JSON.stringify(garageDoor));
+    localStorage.setItem("kitchenFan", JSON.stringify(kitchenFan));
+    localStorage.setItem("diningRoomLight", JSON.stringify(diningRoomLight));
 }

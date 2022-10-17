@@ -100,6 +100,12 @@ span{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+.time-info{
+    float: right;
+    font-style: italic;
+    font-size: 11pt;
+}
+
 @media only screen and (max-width: 768px) {
     header{
         padding: 50px;
