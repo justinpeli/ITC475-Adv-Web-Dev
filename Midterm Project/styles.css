@@ -27,6 +27,11 @@ header{
 
 a{
     display: block;
+    font-size: 14pt;
+    color: white;
+    margin-bottom: 10px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-style: italic;
 }
 
 select{
@@ -73,11 +78,11 @@ button{
 
 .device-status-div-1{
     background-color: lightgray;
-    padding: 10px 15px 10px;}
+    padding: 15px 15px 15px;}
 
 .device-status-div-2{
     background-color: white;
-    padding: 10px 15px 10px;
+    padding: 15px 15px 15px;
 }
 
 span{
@@ -106,6 +111,14 @@ span{
     font-size: 11pt;
 }
 
+.icons{
+    display: inline;
+    float: left;
+    height: 30px;
+    width: 32px;
+    margin-right: 3px;
+}
+
 @media only screen and (max-width: 768px) {
     header{
         padding: 50px;
@@ -116,5 +129,9 @@ span{
     }
     span{
         font-size: 14pt;
+    }
+    .icons{
+        height: 30px;
+        width: 30px;
     }
 }

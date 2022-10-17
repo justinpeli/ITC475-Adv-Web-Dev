@@ -1,6 +1,7 @@
+let runButton = document.getElementById("run-button");
+
 let livingRoomLamp = null;
 let livingRoomLampJSON = null;
-//checkIfOperating(livingRoomLampJSON);
 
 let bedroomDeskLamp = null;
 let bedroomDeskLampJSON = null;
@@ -52,50 +53,129 @@ let homeItemsArray = [livingRoomLampJSON, bedroomDeskLampJSON, bedroomFloorLampJ
     washerJSON, dryerJSON, frontDoorJSON, backDoorJSON, garageDoorJSON, kitchenFanJSON,
     diningRoomLightJSON];
 
+let livingRoomIconElement = document.getElementById("living-room-icon");
+let bedroomDeskLampIconElement = document.getElementById("bedroom-desk-icon");
+let bedroomFloorLampIconElement = document.getElementById("bedroom-floor-icon");
+let bathroomFanIconElement = document.getElementById("bathroom-fan-icon");
+let washerIconElement = document.getElementById("washer-icon");
+let dryerIconElement = document.getElementById("dryer-icon");
+let frontDoorIconElement = document.getElementById("front-door-icon");
+let backDoorIconElement = document.getElementById("back-door-icon");
+let garageDoorIconElement = document.getElementById("garage-door-icon");
+let kitchenFanIconElement = document.getElementById("kitchen-fan-icon");
+let diningRoomLightIconElement = document.getElementById("dining-room-icon");
+
+let iconElementArray = [livingRoomIconElement, bedroomDeskLampIconElement, bedroomFloorLampIconElement,
+    bathroomFanIconElement, washerIconElement, dryerIconElement, frontDoorIconElement,
+    backDoorIconElement, garageDoorIconElement, kitchenFanIconElement, diningRoomLightIconElement];
+
+let livingRoomLampOperatingIcon = document.createElement("img");
+let bedroomDeskLampOperatingIcon = document.createElement("img");
+let bedroomFloorLampOperatingIcon = document.createElement("img");
+let bathroomFanOperatingIcon = document.createElement("img");
+let washerOperatingIcon = document.createElement("img");
+let dryerOperatingIcon = document.createElement("img");
+let frontDoorOperatingIcon = document.createElement("img");
+let backDoorOperatingIcon = document.createElement("img");
+let garageDoorOperatingIcon = document.createElement("img");
+let kitchenFanOperatingIcon = document.createElement("img");
+let diningRoomLightOperatingIcon = document.createElement("img");
+
+livingRoomLampOperatingIcon.src = "icons/bulb-on.png";
+bedroomDeskLampOperatingIcon.src = "icons/bulb-on.png";
+bedroomFloorLampOperatingIcon.src = "icons/bulb-on.png";
+bathroomFanOperatingIcon.src = "icons/operating-check.png";
+washerOperatingIcon.src = "icons/operating-check.png";
+dryerOperatingIcon.src = "icons/operating-check.png";
+frontDoorOperatingIcon.src = "icons/door-open.png";
+backDoorOperatingIcon.src = "icons/door-open.png";
+garageDoorOperatingIcon.src = "icons/door-open.png";
+kitchenFanOperatingIcon.src = "icons/operating-check.png";
+diningRoomLightOperatingIcon.src = "icons/operating-check.png";
+
+let livingRoomLampNotOperatingIcon = document.createElement("img");
+let bedroomDeskLampNotOperatingIcon = document.createElement("img");
+let bedroomFloorLampNotOperatingIcon = document.createElement("img");
+let bathroomFanNotOperatingIcon = document.createElement("img");
+let washerNotOperatingIcon = document.createElement("img");
+let dryerNotOperatingIcon = document.createElement("img");
+let frontDoorNotOperatingIcon = document.createElement("img");
+let backDoorNotOperatingIcon = document.createElement("img");
+let garageDoorNotOperatingIcon = document.createElement("img");
+let kitchenFanNotOperatingIcon = document.createElement("img");
+let diningRoomLightNotOperatingIcon = document.createElement("img");
+
+livingRoomLampNotOperatingIcon.src = "icons/bulb-off.png";
+bedroomDeskLampNotOperatingIcon.src = "icons/bulb-off.png";
+bedroomFloorLampNotOperatingIcon.src = "icons/bulb-off.png";
+bathroomFanNotOperatingIcon.src = "icons/operating-x.png";
+washerNotOperatingIcon.src = "icons/operating-x.png";
+dryerNotOperatingIcon.src = "icons/operating-x.png";
+frontDoorNotOperatingIcon.src = "icons/door-close.png";
+backDoorNotOperatingIcon.src = "icons/door-close.png";
+garageDoorNotOperatingIcon.src = "icons/door-close.png";
+kitchenFanNotOperatingIcon.src = "icons/operating-x.png";
+diningRoomLightNotOperatingIcon.src = "icons/operating-x.png";
+
+let itemsOperatingIconsArray = [livingRoomLampOperatingIcon, bedroomDeskLampOperatingIcon,
+    bedroomFloorLampOperatingIcon, bathroomFanOperatingIcon, washerOperatingIcon, dryerOperatingIcon,
+    frontDoorOperatingIcon, backDoorOperatingIcon, garageDoorOperatingIcon, kitchenFanOperatingIcon, 
+    diningRoomLightOperatingIcon];
+
+let itemsNotOperatingIconsArray = [livingRoomLampNotOperatingIcon, bedroomDeskLampNotOperatingIcon, 
+    bedroomFloorLampNotOperatingIcon, bathroomFanNotOperatingIcon, washerNotOperatingIcon, dryerNotOperatingIcon,
+    frontDoorNotOperatingIcon, backDoorNotOperatingIcon, garageDoorNotOperatingIcon, kitchenFanNotOperatingIcon, 
+    diningRoomLightNotOperatingIcon];
+
+for (let i = 0; i < itemsOperatingIconsArray.length; i++){
+    itemsOperatingIconsArray[i].className = "icons";
+    itemsNotOperatingIconsArray[i].className = "icons";
+}
+
 function run (){
     livingRoomLamp = localStorage.getItem("livingRoomLamp");
     livingRoomLampJSON = JSON.parse(livingRoomLamp);
-    checkIfOperating(livingRoomLampJSON);
+    //checkIfOperating(livingRoomLampJSON);
 
     bedroomDeskLamp = localStorage.getItem("bedroomDeskLamp");
     bedroomDeskLampJSON = JSON.parse(bedroomDeskLamp);
-    checkIfOperating(bedroomDeskLampJSON);
+    //checkIfOperating(bedroomDeskLampJSON);
 
     bedroomFloorLamp = localStorage.getItem("bedroomFloorLamp");
     bedroomFloorLampJSON = JSON.parse(bedroomFloorLamp);
-    checkIfOperating(bedroomFloorLampJSON);
+    //checkIfOperating(bedroomFloorLampJSON);
 
-    bathroomFan = localStorage.getItem("bedroomDeskLamp");
+    bathroomFan = localStorage.getItem("bathroomFan");
     bathroomFanJSON = JSON.parse(bathroomFan);
-    checkIfOperating(bathroomFanJSON);
+    //checkIfOperating(bathroomFanJSON);
 
     washer = localStorage.getItem("washer");
     washerJSON = JSON.parse(washer);
-    checkIfOperating(washerJSON);
+    //checkIfOperating(washerJSON);
 
     dryer = localStorage.getItem("dryer");
     dryerJSON = JSON.parse(dryer);
-    checkIfOperating(dryerJSON);
+    //checkIfOperating(dryerJSON);
 
     frontDoor = localStorage.getItem("frontDoor");
     frontDoorJSON = JSON.parse(frontDoor);
-    checkIfOperating(frontDoorJSON);
+    //checkIfOperating(frontDoorJSON);
 
     backDoor = localStorage.getItem("backDoor");
     backDoorJSON = JSON.parse(backDoor);
-    checkIfOperating(backDoorJSON);
+    //checkIfOperating(backDoorJSON);
 
     garageDoor = localStorage.getItem("garageDoor");
     garageDoorJSON = JSON.parse(garageDoor);
-    checkIfOperating(garageDoorJSON);
+    //checkIfOperating(garageDoorJSON);
 
     kitchenFan = localStorage.getItem("kitchenFan");
     kitchenFanJSON = JSON.parse(kitchenFan);
-    checkIfOperating(kitchenFanJSON);
+    //checkIfOperating(kitchenFanJSON);
 
     diningRoomLight = localStorage.getItem("diningRoomLight");
     diningRoomLightJSON = JSON.parse(diningRoomLight);
-    checkIfOperating(diningRoomLightJSON);
+    //checkIfOperating(diningRoomLightJSON);
 
     homeItemsArray = [livingRoomLampJSON, bedroomDeskLampJSON, bedroomFloorLampJSON, bathroomFanJSON, 
         washerJSON, dryerJSON, frontDoorJSON, backDoorJSON, garageDoorJSON, kitchenFanJSON,
@@ -104,8 +184,6 @@ function run (){
     timeElementArray = [livingRoomTimeElement, bedroomDeskTimeElement, bedroomFloorTimeElement,
         bathroomFanTimeElement, washerTimeElement, dryerTimeElement, frontDoorTimeElement, backDoorTimeElement,
         garageDoorTimeElement, kitchenFanTimeElement, diningRoomLightTimeElement];
-    
-    // console.log("HOME ARRAY ST: " + homeItemsArray[0].startTime);
 
     addGUIComponents();
 
@@ -113,38 +191,79 @@ function run (){
 
 function checkIfOperating(homeItem){
 
-    /*
+    console.log(homeItem)
+    
     if (Object.keys(homeItem).length === 0){
         if (homeItem.isOperating == true){
-            // set the correct icon
-            // set the correct text color
+            // set the correct icon for currently operating
         } else {
-            // set the correct icon
-            // set the correct text color
+            // set the correct icon for currently NOT operating
         }
     }
-    */
 
 }
 
 
 function addGUIComponents(){
     
+    /*
     for (let i = 0; i < homeItemsArray.length; i++){
-
-        //console.log(timeElementArray[0])
         
-        if(homeItemsArray[4].isOperating == true){
-            timeElementArray[i].innerHTML = "Start time for item is: " + homeItemsArray[i].startTime;
+        if(homeItemsArray[i].isOperating == true){
+            timeElementArray[i].innerHTML = "OPERATING";
+            timeElementArray[i].style.color = "green";
+            iconElementArray[i].appendChild(itemsOperatingIconsArray[i]);
         }
         else {
-            console.log("fail");
+            timeElementArray[i].innerHTML = "NOT OPERATING";
+            timeElementArray[i].style.color = "red";
+            iconElementArray[i].appendChild(itemsNotOperatingIconsArray[i]);
         }
         
     }
+    */
     
 }
 
+runButton.addEventListener("click", checkIfItemIsStillOperating);
+
+function checkIfItemIsStillOperating(){
+
+    let currentDate = new Date();
+    let currentHour = currentDate.getHours();
+    let currentMinute = currentDate.getMinutes();
+    let currentTime = currentHour + ":" + currentMinute;
+
+    for(let i = 0; i < homeItemsArray.length; i++){
+        if (currentTime >= homeItemsArray[i].startTime && currentTime <= homeItemsArray[i].endTime){
+            if(i == 6 || i == 7 || i == 8){
+                timeElementArray[i].innerHTML = "DOOR OPENED";
+            } else if (i == 0 || i == 1 || i == 2 || i == 10){
+                timeElementArray[i].innerHTML = "LIGHT ON";    
+            } else {
+                timeElementArray[i].innerHTML = "OPERATING";   
+            }
+            timeElementArray[i].style.color = "green";
+            iconElementArray[i].appendChild(itemsOperatingIconsArray[i]);
+            itemsOperatingIconsArray[i].style.display = "inline"
+            itemsNotOperatingIconsArray[i].style.display = "none";
+        } else {
+            if(i == 6 || i == 7 || i == 8){
+                timeElementArray[i].innerHTML = "DOOR CLOSED";
+            } else if (i == 0 || i == 1 || i == 2 || i == 10){
+                timeElementArray[i].innerHTML = "LIGHT OFF";    
+            } else {
+                timeElementArray[i].innerHTML = "NOT OPERATING";   
+            }
+            timeElementArray[i].style.color = "red";
+            iconElementArray[i].appendChild(itemsNotOperatingIconsArray[i]);
+            itemsNotOperatingIconsArray[i].style.display = "inline"
+            itemsOperatingIconsArray[i].style.display = "none";
+        }
+    }
+
+    setInterval(checkIfItemIsStillOperating, 1000);
+}
 
 function addCurrentTime(){
     let currentDate = new Date();

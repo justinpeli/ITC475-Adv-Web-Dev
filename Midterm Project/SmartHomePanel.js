@@ -39,7 +39,7 @@ let garageDoor = new HomeItem();
 let kitchenFan = new HomeItem();
 let diningRoomLight = new HomeItem();
 
-checkIfDevicesAreStillOperating();
+//checkIfDevicesAreStillOperating();
 
 function setParameters(){
     let selectedItemElement = document.getElementById("select-device");
@@ -76,61 +76,70 @@ function setItemAttributes(selectedItemValue, startTime, endTime){
             livingRoomLamp.setStartTime = startTime;
             livingRoomLamp.setEndTime = endTime;
             setIfDeviceIsOperating(livingRoomLamp, startTime, endTime);
-            console.log(livingRoomLamp + "end time is: " + endTime)
+            localStorage.setItem("livingRoomLamp", JSON.stringify(livingRoomLamp));
+            //console.log(livingRoomLamp + "end time is: " + endTime)
             break;
         case "lamp-bed1":
             bedroomDeskLamp.setStartTime = startTime;
             bedroomDeskLamp.setEndTime = endTime;
             setIfDeviceIsOperating(bedroomDeskLamp, startTime, endTime);
+            localStorage.setItem("bedroomDeskLamp", JSON.stringify(bedroomDeskLamp));
             break;
         case "lamp-bed2":
             bedroomFloorLamp.setStartTime = startTime;
             bedroomFloorLamp.setEndTime = endTime;
             setIfDeviceIsOperating(bedroomFloorLamp, startTime, endTime);
+            localStorage.setItem("bedroomFloorLamp", JSON.stringify(bedroomFloorLamp));
             break;
         case "fan-bathroom":
             bathroomFan.setStartTime = startTime;
             bathroomFan.setEndTime = endTime;
             setIfDeviceIsOperating(bathroomFan, startTime, endTime);
+            localStorage.setItem("bathroomFan", JSON.stringify(bathroomFan));
             break;
         case "washer":
             washer.setStartTime = startTime;
             washer.setEndTime = endTime;
             setIfDeviceIsOperating(washer, startTime, endTime);
+            localStorage.setItem("washer", JSON.stringify(washer));
             break;
         case "dryer":
             dryer.setStartTime = startTime;
             dryer.setEndTime = endTime;
             setIfDeviceIsOperating(dryer, startTime, endTime);
+            localStorage.setItem("dryer", JSON.stringify(dryer));
         case "front-door":
             frontDoor.setStartTime = startTime;
             frontDoor.setEndTime = endTime;
             setIfDeviceIsOperating(frontDoor, startTime, endTime);
+            localStorage.setItem("frontDoor", JSON.stringify(frontDoor));
             break;
         case "back-door":
             backDoor.setStartTime = startTime;
             backDoor.setEndTime = endTime;
             setIfDeviceIsOperating(backDoor, startTime, endTime);
+            localStorage.setItem("backDoor", JSON.stringify(backDoor));
             break;
         case "garage-door":
             garageDoor.setStartTime = startTime;
             garageDoor.setEndTime = endTime;
             setIfDeviceIsOperating(garageDoor, startTime, endTime);
-            console.log("LR END TIME IS: " + livingRoomLamp.getEndTime);
+            localStorage.setItem("garageDoor", JSON.stringify(garageDoor));
+            console.log(livingRoomLamp.getStartTime)
             break;
         case "fan-kitchen":
             kitchenFan.setStartTime = startTime;
             kitchenFan.setEndTime = endTime;
             setIfDeviceIsOperating(kitchenFan, startTime, endTime);
+            localStorage.setItem("kitchenFan", JSON.stringify(kitchenFan));
             break;
         case "dining-light":
             diningRoomLight.setStartTime = startTime;
             diningRoomLight.setEndTime = endTime;
             setIfDeviceIsOperating(diningRoomLight, startTime, endTime);
+            localStorage.setItem("diningRoomLight", JSON.stringify(diningRoomLight));
             break;
     }
-
-    setLocaleVariables();
 
 }
 
@@ -141,19 +150,18 @@ function setIfDeviceIsOperating(homeItem, startTime, endTime){
     let currentMinute = currentDate.getMinutes();
     let currentTime = currentHour + ":" + currentMinute;
 
-    console.log("current time is: " + currentTime)
-    console.log(homeItem + "start time is: " + startTime)
-    console.log(homeItem + "end time is: " + endTime)
 
-
-    if (currentTime => startTime && currentTime <= endTime){
+    if (currentTime >= startTime && currentTime <= endTime){
+        console.log("item is operating")
         homeItem.setIsOperating = true;
     }
     else {
+        console.log("item is NOT operating")
         homeItem.setIsOperating = false;
     }
 }
 
+/*
 function checkIfDevicesAreStillOperating(){
     // create an array for all items
     // create a for loop to loop through an array containing all items
@@ -183,19 +191,5 @@ function checkIfDevicesAreStillOperating(){
         }
     }
     setLocaleVariables();
-    setInterval(checkIfDevicesAreStillOperating, 1000)
 }
-
-function setLocaleVariables(){
-    localStorage.setItem("livingRoomLamp", JSON.stringify(livingRoomLamp));
-    localStorage.setItem("bedroomDeskLamp", JSON.stringify(bedroomDeskLamp));
-    localStorage.setItem("bedroomFloorLamp", JSON.stringify(bedroomFloorLamp));
-    localStorage.setItem("bathroomFan", JSON.stringify(bathroomFan));
-    localStorage.setItem("washer", JSON.stringify(washer));
-    localStorage.setItem("dryer", JSON.stringify(dryer));
-    localStorage.setItem("frontDoor", JSON.stringify(frontDoor));
-    localStorage.setItem("backDoor", JSON.stringify(backDoor));
-    localStorage.setItem("garageDoor", JSON.stringify(garageDoor));
-    localStorage.setItem("kitchenFan", JSON.stringify(kitchenFan));
-    localStorage.setItem("diningRoomLight", JSON.stringify(diningRoomLight));
-}
+*/
