@@ -160,36 +160,3 @@ function setIfDeviceIsOperating(homeItem, startTime, endTime){
         homeItem.setIsOperating = false;
     }
 }
-
-/*
-function checkIfDevicesAreStillOperating(){
-    // create an array for all items
-    // create a for loop to loop through an array containing all items
-    // check if device has a start and end time
-    // if current time is outside of start and end time set isOperating of item to false
-    // if inside start and end time frame set isOperating to true
-    // call the setLocaleVariables Method
-    // repeat every second
-
-    let homeItemsArray = [livingRoomLamp, bedroomDeskLamp, bedroomFloorLamp, bathroomFan, 
-        washer, dryer, frontDoor, backDoor, garageDoor, kitchenFan,
-        diningRoomLight];
-
-    let currentDate = new Date();
-    let currentHour = currentDate.getHours();
-    let currentMinute = currentDate.getMinutes();
-    let currentTime = currentHour + ":" + currentMinute;
-
-    for (let i = 0; i < homeItemsArray.length; i++){
-        if (homeItemsArray[i] != "undefined"){
-            if (currentTime => homeItemsArray[i].getStartTime && currentTime <= homeItemsArray[i].getEndTime){
-                homeItemsArray[i].setIsOperating = true;
-            }
-            else {
-                homeItemsArray[i].setIsOperating = false;
-            }
-        }
-    }
-    setLocaleVariables();
-}
-*/

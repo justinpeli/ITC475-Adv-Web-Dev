@@ -135,47 +135,36 @@ for (let i = 0; i < itemsOperatingIconsArray.length; i++){
 function run (){
     livingRoomLamp = localStorage.getItem("livingRoomLamp");
     livingRoomLampJSON = JSON.parse(livingRoomLamp);
-    //checkIfOperating(livingRoomLampJSON);
 
     bedroomDeskLamp = localStorage.getItem("bedroomDeskLamp");
     bedroomDeskLampJSON = JSON.parse(bedroomDeskLamp);
-    //checkIfOperating(bedroomDeskLampJSON);
 
     bedroomFloorLamp = localStorage.getItem("bedroomFloorLamp");
     bedroomFloorLampJSON = JSON.parse(bedroomFloorLamp);
-    //checkIfOperating(bedroomFloorLampJSON);
 
     bathroomFan = localStorage.getItem("bathroomFan");
     bathroomFanJSON = JSON.parse(bathroomFan);
-    //checkIfOperating(bathroomFanJSON);
 
     washer = localStorage.getItem("washer");
     washerJSON = JSON.parse(washer);
-    //checkIfOperating(washerJSON);
 
     dryer = localStorage.getItem("dryer");
     dryerJSON = JSON.parse(dryer);
-    //checkIfOperating(dryerJSON);
 
     frontDoor = localStorage.getItem("frontDoor");
     frontDoorJSON = JSON.parse(frontDoor);
-    //checkIfOperating(frontDoorJSON);
 
     backDoor = localStorage.getItem("backDoor");
     backDoorJSON = JSON.parse(backDoor);
-    //checkIfOperating(backDoorJSON);
 
     garageDoor = localStorage.getItem("garageDoor");
     garageDoorJSON = JSON.parse(garageDoor);
-    //checkIfOperating(garageDoorJSON);
 
     kitchenFan = localStorage.getItem("kitchenFan");
     kitchenFanJSON = JSON.parse(kitchenFan);
-    //checkIfOperating(kitchenFanJSON);
 
     diningRoomLight = localStorage.getItem("diningRoomLight");
     diningRoomLightJSON = JSON.parse(diningRoomLight);
-    //checkIfOperating(diningRoomLightJSON);
 
     homeItemsArray = [livingRoomLampJSON, bedroomDeskLampJSON, bedroomFloorLampJSON, bathroomFanJSON, 
         washerJSON, dryerJSON, frontDoorJSON, backDoorJSON, garageDoorJSON, kitchenFanJSON,
@@ -185,44 +174,6 @@ function run (){
         bathroomFanTimeElement, washerTimeElement, dryerTimeElement, frontDoorTimeElement, backDoorTimeElement,
         garageDoorTimeElement, kitchenFanTimeElement, diningRoomLightTimeElement];
 
-    addGUIComponents();
-
-}
-
-function checkIfOperating(homeItem){
-
-    console.log(homeItem)
-    
-    if (Object.keys(homeItem).length === 0){
-        if (homeItem.isOperating == true){
-            // set the correct icon for currently operating
-        } else {
-            // set the correct icon for currently NOT operating
-        }
-    }
-
-}
-
-
-function addGUIComponents(){
-    
-    /*
-    for (let i = 0; i < homeItemsArray.length; i++){
-        
-        if(homeItemsArray[i].isOperating == true){
-            timeElementArray[i].innerHTML = "OPERATING";
-            timeElementArray[i].style.color = "green";
-            iconElementArray[i].appendChild(itemsOperatingIconsArray[i]);
-        }
-        else {
-            timeElementArray[i].innerHTML = "NOT OPERATING";
-            timeElementArray[i].style.color = "red";
-            iconElementArray[i].appendChild(itemsNotOperatingIconsArray[i]);
-        }
-        
-    }
-    */
-    
 }
 
 runButton.addEventListener("click", checkIfItemIsStillOperating);
