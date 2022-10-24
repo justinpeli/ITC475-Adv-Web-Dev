@@ -41,12 +41,12 @@ function setActivities(locationString){
 
         newActivityString.innerHTML = activities[i];
         newActivityCheckBox.setAttribute("type", "checkbox");
-        newActivityCheckBox.required = true;
 
         newActivityCheckBox.id = "activity-check-box";
         newActivityString.id = "activity-check-box-text";
         lineBreak.id = "line-break";
 
+        newActivityCheckBox.required = false;
         
         document.getElementById("activities-div").appendChild(newActivityCheckBox);
         document.getElementById("activities-div").appendChild(newActivityString);

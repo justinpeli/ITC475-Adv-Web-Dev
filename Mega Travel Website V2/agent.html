@@ -27,28 +27,28 @@
             <p >We would love to know more about your travel plans. Please fill out the
                 contact form to get in touch with a travel agent.</p>
         </section>
-        <form method="post" id="contact-agent-form">
+        <form action = "confirm.php" method="post" id="contact-agent-form">
             <h2 style="color: #0E1445;">Contact an Agent</h2>
             <span id="no-location-error"></span>
             <hr>
             <section class="name-information">
                 <label class="input-label">First Name<span style="color: red;">*</span>:</label>
-                <input type="text" class="text-input" required>
+                <input type="text" class="text-input" name = "firstName" required>
                 <label class="input-label">Last Name<span style="color: red;">*</span>:</label>
-                <input type="text" class="text-input" required>
+                <input type="text" class="text-input" name = "lastName" required>
             </section>
             <section class="email-information">
                 <label class="input-label">Email<span style="color: red;">*</span>:</label>
-                <input type="text" class="text-input" required>
+                <input type="text" class="text-input" name = "email" required>
             </section>
             <section class="phone-information">
                 <label class="input-label">Phone Number: <em>xxx-xxx-xxxx</em><span style="color: red;">*</span></label>
-                <input type="tel" class="text-input" 
+                <input type="tel" class="text-input" name = "phoneNumber" 
                 pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
             </section>
             <section class="number-of-people-information">
                 <label class="input-label">Number of Adults Traveling<span style="color: red;">*</span>:</label>
-                <select name="number-of-adults" id="number-of-adults">
+                <select id="number-of-adults" name = "adultTravelers" >
                     <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -62,7 +62,7 @@
                     <option value="10">10</option>
                 </select>
                 <label class="input-label">Number of Kids Traveling<span style="color: red;">*</span>:</label>
-                <select name="number-of-kids" id="number-of-kids">
+                <select id="number-of-kids" name = "kidTravelers" >
                     <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -77,11 +77,11 @@
                 </select>
             </section>
                 <label class="input-label">Trip Start Date<span style="color: red;">*</span>:</label>
-                <input type="date" required>
+                <input type="date" name = "startDate" required>
             </section>
             <section id="location-information">
                 <label for="select-location" class="input-label">Select Location<span style="color: red;">*</span>:</label>
-                <select name="select-location" id="select-location" onchange="getParameter();" required>
+                <select name="selectedLocation" id="select-location" onchange="getParameter();" required>
                     <option value="" selected disabled>--Select A Location--</option>
                     <option value="maldives">Maldives, South Asia</option>
                     <option value="mexico">Cancun, Mexico</option>
