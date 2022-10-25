@@ -81,16 +81,16 @@
             </section>
             <section id="location-information">
                 <label for="select-location" class="input-label">Select Location<span style="color: red;">*</span>:</label>
-                <select name="selectedLocation" id="select-location" onchange="getParameter();" required>
+                <select name="selectedLocation" id="select-location" onchange="getParameter();">
                     <option value="" selected disabled>--Select A Location--</option>
                     <option value="maldives">Maldives, South Asia</option>
                     <option value="mexico">Cancun, Mexico</option>
                     <option value="new zealand">New Zealand</option>
                     <option value="italy">Venice, Italy</option>
                 </select>
-                <b id="destined-location-title"></b>
-                <div id = "activities-div"></div>
             </section>
+            <b id="destined-location-title"></b>
+            <div id = "activities-div"></div>
             <input type="submit" value="Submit Form" class="button" style="margin: 10px 0px 10px;">
             <input type="reset" value = "CLEAR" class = "button">
         </form>

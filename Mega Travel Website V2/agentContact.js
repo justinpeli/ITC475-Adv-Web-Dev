@@ -4,6 +4,7 @@ function setActivities(locationString){
 
     let title = "";
     let activities = null;
+    let checkBoxArray = new Array();
 
     if(titleElement != null){
         clearAllActivities();
@@ -41,17 +42,31 @@ function setActivities(locationString){
 
         newActivityString.innerHTML = activities[i];
         newActivityCheckBox.setAttribute("type", "checkbox");
+        checkBoxArray.push(newActivityCheckBox);
 
         newActivityCheckBox.id = "activity-check-box";
         newActivityString.id = "activity-check-box-text";
         lineBreak.id = "line-break";
 
-        newActivityCheckBox.required = false;
-        
+        newActivityCheckBox.value = activities[i];
+
         document.getElementById("activities-div").appendChild(newActivityCheckBox);
         document.getElementById("activities-div").appendChild(newActivityString);
         document.getElementById("activities-div").appendChild(lineBreak);
+
+        /*
+        document.getElementById("contact-agent-form").appendChild(newActivityCheckBox);
+        document.getElementById("contact-agent-form").appendChild(newActivityString);
+        document.getElementById("contact-agent-form").appendChild(lineBreak);
+        */
+        
     }
+
+    for(let i = 0; i < checkBoxArray.length; i++){
+        checkBoxArray[i].name = "checkBox"+i;
+    }
+
+    console.log(checkBoxArray)
 
 }
 
