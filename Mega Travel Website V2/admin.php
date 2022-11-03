@@ -24,7 +24,32 @@
     $result = mysqli_query($conn, $sqlSelect);
     $resultCheck = mysqli_num_rows($result);
 
+    $resultTwo = mysqli_query($conn, $sqlSelect);
+    $resultCheckTwo = mysqli_num_rows($resultTwo);
+
 ?>
+            
+        <div class = "mobile-view-div">
+            <?php
+                if ($resultCheck > 0){
+                    while ($row = mysqli_fetch_assoc($result)){
+                        echo "
+                            <div class = 'form-info-div'>
+                                <span class = 'form-info-span'>"."<b>Name: </b>".$row['LastName'].", ".$row['FirstName']."</span>
+                                <span class = 'form-info-span'>"."<b>Phone Number: </b>".$row['PhoneNumber']."</span>
+                                <span class = 'form-info-span'>"."<b>Email: </b>".$row['Email']."</span>
+                                <span class = 'form-info-span'>"."<b>Adults: </b>".$row['NumberOfAdults']."</span>
+                                <span class = 'form-info-span'>"."<b>Children: </b>".$row['NumberOfChildren']."</span>
+                                <span class = 'form-info-span'>"."<b>Destination: </b>".$row['Destination']."</span>
+                                <span class = 'form-info-span'>"."<b>Travel Date: </b>".$row['TravelDate']."</td>
+                                <span class = 'form-info-span'>"."<b>Activities: </b>".$row['InterestedActivities']."</span>
+                            </div>
+                        ";
+                    }
+                }
+            ?>
+        </div>
+
         <div class = "table-div">
             <table>
                 <tr>
@@ -39,18 +64,19 @@
                 </tr>
                 <tr>
                     <?php
+                        mysqli_data_seek($result,0);
                         if ($resultCheck > 0){
-                            while ($row = mysqli_fetch_assoc($result)){
+                            while ($rowTwo = mysqli_fetch_assoc($result)){
                                 echo "
                                     <tr>
-                                        <td>".$row['LastName'].", ".$row['FirstName']."</td>
-                                        <td>".$row['PhoneNumber']."</td>
-                                        <td>".$row['Email']."</td>
-                                        <td>".$row['NumberOfAdults']."</td>
-                                        <td>".$row['NumberOfChildren']."</td>
-                                        <td>".$row['Destination']."</td>
-                                        <td>".$row['TravelDate']."</td>
-                                        <td>".$row['InterestedActivities']."</td>
+                                        <td>".$rowTwo['LastName'].", ".$rowTwo['FirstName']."</td>
+                                        <td>".$rowTwo['PhoneNumber']."</td>
+                                        <td>".$rowTwo['Email']."</td>
+                                        <td>".$rowTwo['NumberOfAdults']."</td>
+                                        <td>".$rowTwo['NumberOfChildren']."</td>
+                                        <td>".$rowTwo['Destination']."</td>
+                                        <td>".$rowTwo['TravelDate']."</td>
+                                        <td>".$rowTwo['InterestedActivities']."</td>
                                     </tr>
                                 ";
                             }
@@ -60,7 +86,7 @@
             </table>
         </div>
 
-        <footer>
+        <footer style = "float: right;">
             <p style="color: white;">Copyright Protected. All rights reserved.
                 <br><br>
                 MEGA TRAVLES <br>

@@ -299,8 +299,12 @@ th{
 
 td{
     border:1px solid black;
-    padding: 15px;
+    padding: 10px;
     margin: 0;
+}
+
+.mobile-view-div{
+    display: none;
 }
 
 @media only screen and (max-width: 768px) {
@@ -377,4 +381,42 @@ td{
     #select-location{
         width: 100%;
     }
+    
+    .table-div{
+        display: none;
+    }
+
+    .mobile-view-div{
+        width: 100%;
+        padding: 10px;
+        display: block;
+    }
+
+    .form-info-div{
+        width: 100%;
+        padding: 10px;
+        border-radius: 25px;
+        box-shadow: 5px 10px 18px #888888;
+    }
+
+    .mobile-view-div{
+        width: 100%;
+        padding: 10px;
+        display: block;
+    }
+
+    .form-info-div{
+        width: 100%;
+        padding: 15px;
+        border-radius: 25px;
+        box-shadow: 5px 10px 15px #888888;
+        margin-bottom: 15px;
+    }
+    
+    .form-info-span{
+        display: block;
+        margin-bottom: 3px;
+        font-size: 16pt;
+    }
+
 }
