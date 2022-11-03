@@ -6,27 +6,35 @@
     $email = $_POST["email"];
     $adultTravelers = $_POST["adultTravelers"];
     $childrenTravelers = $_POST["kidTravelers"];
+
+    $adultTravelersInteger = intval($adultTravelers);
+    $childrenTravelersInteger = intval($childrenTravelers);
+
     $selectedLocation = getLocationName($_POST["selectedLocation"]);
     $originalDate = $_POST["startDate"];
     $date = formatDate($originalDate);
     $selectedActivities = getSelectedActivities();
+    
     $dbServerName = "localhost";
     $dbUsername = "root";
     $dbPassword = "";
     $dbName = "mega_travel";
 
+    // connection to database
     $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
 
+    // see if database connection is successful
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
     }
 
+    // SQL
     $sqlInsert = "INSERT INTO TripFormInfo (id, FirstName, LastName, PhoneNumber, 
         Email, NumberOfAdults, NumberOfChildren, Destination, TravelDate, 
         InterestedActivities) VALUES (NULL, '$firstName', '$lastName', '$phoneNumber',
-        '$email', '$adultTravelers', '$childrenTravelers', '$selectedLocation', '$date', '$selectedActivities')";
+        '$email', '$adultTravelersInteger', '$childrenTravelersInteger', '$selectedLocation', '$date', '$selectedActivities')";
 
-    if (mysqli_query($conn, $sqlInsert))
+    mysqli_query($conn, $sqlInsert);
 
     mysqli_close($conn);
 
@@ -49,8 +57,8 @@
             Client Name: <span style = "font-style: italic;"><b><?php echo $firstName." ".$lastName; ?></b></span><br><br>
             Client Phone Number: <span style = "font-style: italic;"><b><?php echo $phoneNumber; ?></b></span><br><br>
             Client Email: <span style = "font-style: italic;"><b><?php echo $email; ?></b></span><br><br>
-            Number of Adults: <span style = "font-style: italic;"><b><?php echo $adultTravelers; ?></b></span><br><br>
-            Number of children: <span style = "font-style: italic;"><b><?php echo $childrenTravelers ?></b></span><br><br>
+            Number of Adults: <span style = "font-style: italic;"><b><?php echo $adultTravelersInteger; ?></b></span><br><br>
+            Number of children: <span style = "font-style: italic;"><b><?php echo $childrenTravelersInteger ?></b></span><br><br>
             Destination: <span style = "font-style: italic;"><b><?php echo $selectedLocation; ?></b></span><br><br>
             Travel Dates: <span style = "font-style: italic;"><b><?php echo $date; ?></b></span><br><br>
             Interested Activities: <span style = "font-style: italic;"><b><?php echo $selectedActivities; ?></b></span><br><br>
