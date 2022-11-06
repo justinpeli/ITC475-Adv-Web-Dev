@@ -1,16 +1,6 @@
-<html>
-    <head>
-        <title>Mega Travel | Admin</title>
-        <link rel="stylesheet" href="styles.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <header>
-            <img src="site files/mega travel logo.png" alt="Mega Travel Logo" 
-            class = "mega-travel-logo-img">
-        </header>
-
 <?php
+
+    //header("Location:login.php");
 
     $dbServerName = "localhost";
     $dbUsername = "root";
@@ -24,11 +14,19 @@
     $result = mysqli_query($conn, $sqlSelect);
     $resultCheck = mysqli_num_rows($result);
 
-    $resultTwo = mysqli_query($conn, $sqlSelect);
-    $resultCheckTwo = mysqli_num_rows($resultTwo);
-
 ?>
-            
+
+<html>
+    <head>
+        <title>Mega Travel | Admin</title>
+        <link rel="stylesheet" href="styles.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <header>
+            <img src="site files/mega travel logo.png" alt="Mega Travel Logo" 
+            class = "mega-travel-logo-img">
+        </header>         
         <div class = "mobile-view-div">
             <?php
                 if ($resultCheck > 0){
