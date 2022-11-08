@@ -350,6 +350,24 @@ td{
     left: 0;
 }
 
+.login-link{
+    float: right;
+    text-decoration: none;
+    font-style: italic;
+    color: #C00000;
+}
+
+.login-error{
+    padding: 3px;
+    width: 100%;
+    margin-bottom: 5px;
+    border: 2px solid red;
+    border-radius: 5px;
+    background-color: #EA6E5A;
+    font-style: italic;
+    font-size: 11pt;
+}
+
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
     [class*="col-"] {

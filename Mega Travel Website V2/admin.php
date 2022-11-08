@@ -1,18 +1,26 @@
 <?php
 
-    //header("Location:login.php");
+    // start session
+    session_start();
 
-    $dbServerName = "localhost";
-    $dbUsername = "root";
-    $dbPassword = "";
-    $dbName = "mega_travel";
+    if(!isset($_SESSION['loggedin'])){
+        header("Location:login.php");
+    } 
+    else {
 
-    // connection to database
-    $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
+        $dbServerName = "localhost";
+        $dbUsername = "root";
+        $dbPassword = "";
+        $dbName = "mega_travel";
 
-    $sqlSelect = "select * from TripFormInfo";
-    $result = mysqli_query($conn, $sqlSelect);
-    $resultCheck = mysqli_num_rows($result);
+        // connection to database
+        $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
+
+        $sqlSelect = "select * from TripFormInfo";
+        $result = mysqli_query($conn, $sqlSelect);
+        $resultCheck = mysqli_num_rows($result);
+
+    }
 
 ?>
 

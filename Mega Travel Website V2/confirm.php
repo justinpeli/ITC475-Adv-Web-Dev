@@ -48,8 +48,9 @@
     </head>
     <body>
         <header>
+            <a href="login.php" class="login-link">Login</a>
             <img src="site files/mega travel logo.png" alt="Mega Travel Logo" 
-            class = "mega-travel-logo-img">
+                class = "mega-travel-logo-img">
         </header>
         <section style = "padding: 20px">
             <span style = "font-style: italic; color: red">Thank you for submitting your 
@@ -148,5 +149,6 @@
 
     ?>
 
+    <script src="welcome.js"></script>
     </body>
 </html>

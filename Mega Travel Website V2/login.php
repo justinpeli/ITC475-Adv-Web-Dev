@@ -1,5 +1,9 @@
 <?php
-// create constants for the username and password
+
+    // start a session
+    session_start();
+
+    // create constants for the username and password
     define("username", "siteadmin", true);
     define("password", " itc475", true);
 
@@ -18,18 +22,6 @@
     $result = mysqli_query($conn, $sqlSelect);
     $resultCheck = mysqli_num_rows($result);
 
-    if(isset($_POST['username']) && isset($_POST['password'])){
-        $inputUsername = $_POST['username'];
-        $inputPassword = $_POST['password'];
-        if ($resultCheck > 0){
-            while ($row = mysqli_fetch_assoc($result)){
-                if($inputUsername === $row['username'] && $inputPassword === $row['userPwd']){
-                    header("Location:admin.php");
-                }
-            }
-        }
-    }
-
 ?>
 
 <html>
@@ -43,13 +35,45 @@
             <img src="site files/mega travel logo.png" alt="Mega Travel Logo" 
             class = "mega-travel-logo-img">
         </header>
+        <div class="header-separator" id="header-separator-id">
+            <span id="welcome-text-span">
+                <b id="welcome-text-bold"></b>
+            </span>
+            <span id="sun-moon-span"></span>
+            <span id="time-text-span"></span>
+        </div>
+        <nav>
+            <a href="index.html" target="_self"><span class="links-text"><b>Home</b></span></a>
+            <a href="aboutUs.html" target="_self"><span class="links-text"><b>About Us</b></span></a>
+            <a href="agent.html" target="_self"><span class="links-text" style="margin-right: 0;"><b>Agent</b></span></a>
+        </nav>
         <form action="" method="POST" class="login">
             <h1 class="login-header">Login</h1>
+
+            <?php
+                if(isset($_POST['signin'])){
+                    $inputUsername = $_POST['username'];
+                    $inputPassword = $_POST['password'];
+                    if ($resultCheck > 0){
+                        while ($row = mysqli_fetch_assoc($result)){
+                            if($inputUsername === $row['username'] && $inputPassword === $row['userPwd']){
+                                $_SESSION['loggedin'] = True;
+                                header("Location:admin.php");
+                            }
+                            else {
+                                echo "<div class = 'login-error'>Sorry! Incorrect Username or Password
+                                    Entered. Please try again.</div>";
+                            }
+                        }
+                    }
+                }
+            ?>
+
             <label for="username" class="login-label">Username:</label>
             <input type="text" name="username" class="login-input">
             <label for="password" class="login-label">Password:</label>
             <input type="password" name="password" class="login-input">
-            <input type="submit" value="Sign In" class="login-button">
+            <input type="submit" value="Sign In" class="login-button" name="signin">
         </form>
         <footer class="login-footer">
             <p style="color: white;">Copyright Protected. All rights reserved.
@@ -58,5 +82,6 @@
                 mega@travels.com
             </p>
         </footer>
+        <script src="welcome.js"></script>
     </body>
 </html>
