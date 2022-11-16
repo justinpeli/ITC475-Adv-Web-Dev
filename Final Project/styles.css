@@ -1,0 +1,95 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height: 100vh;
+}
+
+.Wrapper{
+    height: 100%;
+    width: 100%;
+}
+
+.CharacterSelectionWrapper{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+}
+
+.TestBackground{
+    height: 100%;
+    width: 100%;
+    background-color: green;
+    display: block;
+}
+
+.CharacterSelectionMiddle{
+    background-color: rebeccapurple;
+    display: inline-block;
+    border-radius: 30px;
+}
+
+.SelectionTitle{
+    background-color: gray;
+    font-size: 30pt;
+    color: white;
+    text-align: center;
+    border-radius: 30px 30px 0px 0px;
+}
+
+.RacerDiv{
+    height: 250px;
+    width: 250px;
+    display: inline-block;
+    background-color: yellow;
+    margin: 10px;
+}
+
+.CharacterSelectionContent{
+    padding: 20px;
+}
+
+.Banner{
+    padding: 50px;
+    text-align: center;
+    font-size: 45pt;
+    font-style: italic;
+    color: white;
+    background-color: blue;
+}
+
+.RaceTrack{
+    background-color: white;
+    height: 30%;
+    position: relative;
+    top: 22%;
+    padding: 0;
+    text-align: center;
+}
+
+.Dash{
+    height: 5px;
+    width: 7%;
+    background-color: black;
+    display: inline-block;
+    position: relative;
+    top: 47%;
+    margin: 0px 0.166666% 0px;
+}
+
+@media only screen and (max-width: 768px){
+
+    .RacerDiv{
+        height: 200px;
+        width: 200px;
+    }
+
+}
