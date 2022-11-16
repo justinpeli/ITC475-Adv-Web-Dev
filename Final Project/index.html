@@ -24,18 +24,30 @@
                     <div class="Dash"></div>
                 </div>
             </div>
-            <div class="CharacterSelectionWrapper">
+            <div class="CharacterSelectionWrapper" id="CharacterSelectionWrapper">
                 <div class="CharacterSelectionMiddle">
-                    <div class="SelectionTitle">Choose Your Characters!</div>
+                    <div class="SelectionTitle">Choose Your Racers!</div>
                     <div class="CharacterSelectionContent">
-                        <div class="RacerDiv"></div>
-                        <div class="RacerDiv"></div>
+                        <div class="RacerDiv" id="yellowRacerSideView" onclick="addSelectedRacer('yellow');">
+                            <img src="Images/Yellow Side View.png" alt="yellow side View" class="SideViewImage">
+                        </div>
+                        <div class="RacerDiv" id="blueRacerSideView" onclick="addSelectedRacer('blue');">
+                            <img src="Images/Blue Side View.png" alt="blue side View" class="SideViewImage">
+                        </div>
                         <br>
-                        <div class="RacerDiv"></div>
-                        <div class="RacerDiv"></div>
+                        <div class="RacerDiv" id="redRacerSideView" onclick="addSelectedRacer('red');">
+                            <img src="Images/Red Side View.png" alt="red side View" class="SideViewImage">
+                        </div>
+                        <div class="RacerDiv" id="bronzeRacerSideView" onclick="addSelectedRacer('bronze');">
+                            <img src="Images/Bronze Side View.png" alt="bronze side View" class="SideViewImage">
+                        </div>
+                        <div class="ButtonDiv">
+                            <button id="raceButton" onclick="startRace()" disabled><b>RACE!</b></button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <script src="FinalProjectScript.js"></script>
     </body>
 </html>

@@ -32,9 +32,17 @@ body{
 }
 
 .CharacterSelectionMiddle{
-    background-color: rebeccapurple;
+    background-color: goldenrod;
     display: inline-block;
     border-radius: 30px;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+
+.CharacterSelectionContent{
+    padding-bottom: 20px;
 }
 
 .SelectionTitle{
@@ -46,15 +54,14 @@ body{
 }
 
 .RacerDiv{
-    height: 250px;
-    width: 250px;
+    padding: 20px;
+    max-width: 50%;
+    text-align: center;
     display: inline-block;
     background-color: yellow;
+    border: solid 5px yellow;
+    border-radius: 12px;
     margin: 10px;
-}
-
-.CharacterSelectionContent{
-    padding: 20px;
 }
 
 .Banner{
@@ -85,11 +92,54 @@ body{
     margin: 0px 0.166666% 0px;
 }
 
+.SideViewImage{
+    width: 300px;
+    height: 75px;
+}
+
+.ButtonDiv{
+    text-align: center;
+}
+
+button{
+    font-size: 16pt;
+    font-style: italic;
+    background-color: greenyellow;
+    padding: 10px;
+    border: solid 2px black;
+    border-radius: 10px;
+}
+
 @media only screen and (max-width: 768px){
 
+    .CharacterSelectionWrapper{
+        padding: 30px;
+    }
+
+    .CharacterSelectionMiddle{
+        background-color: goldenrod;
+        width: 100%;
+        text-align: center;
+    }
+
+    .CharacterSelectionContent{
+        padding: 20px;
+    }
+
     .RacerDiv{
-        height: 200px;
-        width: 200px;
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        margin: 0px 0px 10px;
+    }
+
+    .SideViewImage{
+        width: 40%;
+        height: 10%;
+    }
+
+    br{
+        content: "";
     }
 
 }
