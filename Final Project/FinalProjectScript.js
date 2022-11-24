@@ -3,7 +3,19 @@ let blueRacerCurrentlySelected = false;
 let redRacerCurrentlySelected = false;
 let bronzeRacerCurrentlySelected = false;
 
+let yellowRacer = document.createElement("img"); 
+let blueRacer = document.createElement("img");
+let redRacer = document.createElement("img");
+let bronzeRacer = document.createElement("img");
+
+yellowRacer.src = "Images/Yellow Top View.png";
+blueRacer.src = "Images/Blue Top View.png";
+redRacer.src = "Images/Red Top View.png";
+bronzeRacer.src = "Images/Bronze Top View.png";
+
 let racerCounter = 0;
+
+let racers = [];
 
 let racerNumberOne = null;
 let racerNumberTwo = null;
@@ -34,21 +46,6 @@ function addSelectedRacer(racer){
                     racerCounter--;
                 }
             }
-
-            /*
-            if(racerCounter < 2){
-                if(yellowRacerCurrentlySelected == false){
-                    document.getElementById("yellowRacerSideView").style.border = "solid 5px green";
-                    yellowRacerCurrentlySelected = true;
-                    racerCounter++;
-                }
-                else {
-                    document.getElementById("yellowRacerSideView").style.border = "solid 5px yellow";
-                    yellowRacerCurrentlySelected = false;
-                    racerCounter--;
-                }
-            }
-            */
             break;
 
         case "blue":
@@ -74,21 +71,6 @@ function addSelectedRacer(racer){
                     racerCounter--;
                 }
             }
-            
-            /*
-            if(racerCounter <2){
-                if(blueRacerCurrentlySelected == false){
-                    document.getElementById("blueRacerSideView").style.border = "solid 5px green";
-                    blueRacerCurrentlySelected = true;
-                    racerCounter++;
-                }
-                else {
-                    document.getElementById("blueRacerSideView").style.border = "solid 5px yellow";
-                    blueRacerCurrentlySelected = false;
-                    racerCounter--;
-                }
-            }
-            */
             break;
 
         case "red":
@@ -114,30 +96,17 @@ function addSelectedRacer(racer){
                     racerCounter--;
                 }
             }
-
-        /*
-            if(racerCounter < 2){
-                if(redRacerCurrentlySelected == false){
-                    document.getElementById("redRacerSideView").style.border = "solid 5px green";
-                    redRacerCurrentlySelected = true;
-                    racerCounter++;
-                }
-                else {
-                    document.getElementById("redRacerSideView").style.border = "solid 5px yellow";
-                    redRacerCurrentlySelected = false;
-                    racerCounter--;
-                }
-            }
-            */
             break;
 
         case "bronze":
+
+            console.log("Bronze racer selected: " + bronzeRacerCurrentlySelected)
 
             if(racerCounter == 2){
                 if(bronzeRacerCurrentlySelected == true){
                     document.getElementById("bronzeRacerSideView").style.border = "solid 5px yellow";
                     document.getElementById("bronzeRacerSideView").style.backgroundColor = "yellow";
-                    redRacerCurrentlySelected = false;
+                    bronzeRacerCurrentlySelected = false;
                     racerCounter--;
                 }
             } else {
@@ -154,21 +123,6 @@ function addSelectedRacer(racer){
                     racerCounter--;
                 }
             }
-
-            /*
-            if(racerCounter < 2){
-                if(bronzeRacerCurrentlySelected == false){
-                    document.getElementById("bronzeRacerSideView").style.border = "solid 5px green";
-                    bronzeRacerCurrentlySelected = true;
-                    racerCounter++;
-                }
-                else {
-                    document.getElementById("bronzeRacerSideView").style.border = "solid 5px yellow";
-                    bronzeRacerCurrentlySelected = false;
-                    racerCounter--;
-                }
-            }
-            */
             break;
     }
 
@@ -189,5 +143,54 @@ function addSelectedRacer(racer){
 }
 
 function startRace(){
-    document.getElementById("CharacterSelectionWrapper").style.zIndex = "-1";
+    document.getElementById("CharacterSelectionWrapper").style.display = "none";
+    setRacers();
+    startCountDown();
+}
+
+function setRacers(){
+    if(yellowRacerCurrentlySelected){
+        racers.push(yellowRacer);
+    }
+    if(blueRacerCurrentlySelected){
+        racers.push(blueRacer)
+    }
+    if(redRacerCurrentlySelected){
+        racers.push(redRacer)
+    }
+    if(bronzeRacerCurrentlySelected){
+        racers.push(bronzeRacer)
+    }
+
+    addRacersToGUI();
+}
+
+function addRacersToGUI(){
+    racerNumberOne = racers[0];
+    racerNumberTwo = racers[1];
+
+    racerNumberOne.className = "RacerOne";
+    racerNumberTwo.className = "RacerTwo";
+
+    document.getElementById("RacerOne").appendChild(racerNumberOne);
+    document.getElementById("RacerTwo").appendChild(racerNumberTwo);
+}
+
+function startCountDown(){
+
+    for(let countDown = 3; countDown >= 0; countDown--){
+        console.log(countDown)
+        if (countDown == 0){
+            console.log("GO");
+        } else {
+            displayNumber(countDown);
+        }
+    }
+}
+
+function displayNumber(countDown){
+    let countDownElement = document.createElement("h1");
+    countDownElement.innerHTML = countDown;
+    countDownElement.className = "countdown";
+    document.body.appendChild(countDownElement);
 }
