@@ -20,6 +20,13 @@ let racers = [];
 let racerNumberOne = null;
 let racerNumberTwo = null;
 
+let moveRacersInterval;
+
+let stopLight = document.getElementById("stoplight");
+
+let animate;
+let previousMs = 0;
+
 function addSelectedRacer(racer){
 
     switch(racer){
@@ -100,8 +107,6 @@ function addSelectedRacer(racer){
 
         case "bronze":
 
-            console.log("Bronze racer selected: " + bronzeRacerCurrentlySelected)
-
             if(racerCounter == 2){
                 if(bronzeRacerCurrentlySelected == true){
                     document.getElementById("bronzeRacerSideView").style.border = "solid 5px yellow";
@@ -138,8 +143,6 @@ function addSelectedRacer(racer){
         alert("Please Select Only 2 Racers!!")
     }
 
-    console.log(racerCounter)
-
 }
 
 function startRace(){
@@ -174,23 +177,166 @@ function addRacersToGUI(){
 
     document.getElementById("RacerOne").appendChild(racerNumberOne);
     document.getElementById("RacerTwo").appendChild(racerNumberTwo);
+
+    racerNumberOne.style.left = 0;
+    racerNumberTwo.style.left = 0;
 }
 
 function startCountDown(){
 
     for(let countDown = 3; countDown >= 0; countDown--){
-        console.log(countDown)
         if (countDown == 0){
-            console.log("GO");
+            setTimeout(displayGo, 4000);
         } else {
-            displayNumber(countDown);
+            if(countDown == 3){
+                setTimeout(displayNumber, 1000, countDown);
+            }
+            else if (countDown == 2){
+                setTimeout(displayNumber, 2000, countDown);
+            } 
+            else if (countDown == 1){
+                setTimeout(displayNumber, 3000, countDown);
+            }
         }
     }
 }
 
 function displayNumber(countDown){
-    let countDownElement = document.createElement("h1");
+    let countDownElement = document.createElement("div");
     countDownElement.innerHTML = countDown;
-    countDownElement.className = "countdown";
-    document.body.appendChild(countDownElement);
+    countDownElement.className = "CountDown";
+    document.getElementById("countDownWrapper").appendChild(countDownElement);
+    setTimeout(clearCountDownNumber, 1000, countDownElement);
+}
+
+function displayGo(){
+    let goElement = document.createElement("div");
+    goElement.innerHTML = "GO!";
+    goElement.className = "CountDown";
+    document.getElementById("countDownWrapper").appendChild(goElement);
+    setTimeout(clearCountDownNumber, 1000, goElement);
+    setLightToGreen();
+    requestAnimationFrame(moveRacers);
+}
+
+function setLightToGreen(){
+    document.getElementById("redlight").style.boxShadow = "0px 0px 0px 0px red"
+    document.getElementById("greenlight").style.boxShadow = "0px 0px 20px 5px #65E940"
+}
+
+function clearCountDownNumber(countDownElement){
+    countDownElement.remove();
+}
+
+function moveRacers(ms) {
+
+    let racerOneRandomNumber = Math.floor(Math.random() * 11);
+    let racerTwoRandomNumber = Math.floor(Math.random() * 11);
+    let finishLine = document.getElementById("finishline");
+
+    if (previousMs !== 0) {
+      var delta = ms - previousMs;;
+      racerNumberOne.style.left = racerNumberOne.style.left || 0;
+      racerNumberOne.style.left = parseFloat(racerNumberOne.style.left) + (racerOneRandomNumber * delta / 500) + '%';
+
+      racerNumberTwo.style.left = racerNumberTwo.style.left || 0;
+      racerNumberTwo.style.left = parseFloat(racerNumberTwo.style.left) + (racerTwoRandomNumber * delta / 500) + '%';
+    }
+    previousMs = ms;
+
+    if(elementsOverlap(finishLine, racerNumberOne)){
+        winner = "Racer One";
+        console.log(racerNumberOne.style.left)
+        cancelAnimationFrame(moveRacers);
+        displayWinner(winner);
+    } 
+    else if(elementsOverlap(finishLine, racerNumberTwo)){
+        winner = "Racer Two";
+        console.log(racerNumberTwo.style.left)
+        cancelAnimationFrame(moveRacers);
+        displayWinner(winner);
+    }
+    else {
+        requestAnimationFrame(moveRacers);
+        isTouchingStopLight(elementsOverlap(racerNumberOne, stopLight));
+    }
+}
+
+function elementsOverlap(el1, el2) {
+    const domRect1 = el1.getBoundingClientRect();
+    const domRect2 = el2.getBoundingClientRect();
+
+    return !(
+        domRect1.top > domRect2.bottom ||
+        domRect1.right < domRect2.left ||
+        domRect1.bottom < domRect2.top ||
+        domRect1.left > domRect2.right
+    );
+}
+
+function isTouchingStopLight(isTouching){
+    if (isTouching){
+        stopLight.style.opacity = "30%";
+    }
+    else {
+        stopLight.style.opacity = "100%";
+    }
+}
+
+function displayWinner(winner){
+
+    let winnerText = "";
+    let winnerLabel = document.createElement("div");
+
+    stopLight.style.opacity = "30%";
+
+    if(winner == "Racer One"){
+        switch(racerNumberOne){
+            case yellowRacer:
+                winnerText = "Yellow Wins!";
+                setWinnerLabelColor("yellow", winnerLabel);
+                break;
+            case blueRacer:
+                winnerText = "Blue Wins!";
+                setWinnerLabelColor("blue", winnerLabel);
+                break;     
+            case redRacer:
+                winnerText = "Red Wins!";
+                setWinnerLabelColor("red", winnerLabel);
+                break; 
+            case bronzeRacer:
+                winnerText = "Bronze Wins!";
+                setWinnerLabelColor("#DDAF7A", winnerLabel);
+                break;
+        }
+    }
+    else if (winner = "Racer Two"){
+        switch(racerNumberTwo){
+            case yellowRacer:
+                winnerText = "Yellow Wins!";
+                setWinnerLabelColor("yellow", winnerLabel);
+                break;
+            case blueRacer:
+                winnerText = "Blue Wins!";
+                setWinnerLabelColor("blue", winnerLabel);
+                break;     
+            case redRacer:
+                winnerText = "Red Wins!";
+                setWinnerLabelColor("red", winnerLabel);
+                break; 
+            case bronzeRacer:
+                winnerText = "Bronze Wins!";
+                setWinnerLabelColor("#DDAF7A", winnerLabel);
+                break;
+        }
+    }
+    
+    winnerLabel.innerHTML = winnerText;
+    winnerLabel.className = "WinnerLabel";
+    winnerLabel.style.font
+    document.getElementById("countDownWrapper").appendChild(winnerLabel);
+}
+
+function setWinnerLabelColor(color, winnerLabel){
+    winnerLabel.style.color = color;
 }
