@@ -13,6 +13,16 @@ blueRacer.src = "Images/Blue Top View.png";
 redRacer.src = "Images/Red Top View.png";
 bronzeRacer.src = "Images/Bronze Top View.png";
 
+let yellowRacerSide = document.createElement("img"); 
+let blueRacerSide = document.createElement("img");
+let redRacerSide = document.createElement("img");
+let bronzeRacerSide = document.createElement("img");
+
+yellowRacerSide.src = "Images/Yellow Side View.png";
+blueRacerSide.src = "Images/Blue Side View.png";
+redRacerSide.src = "Images/Red Side View.png";
+bronzeRacerSide.src = "Images/Bronze Side View.png";
+
 let racerCounter = 0;
 
 let racers = [];
@@ -23,6 +33,7 @@ let racerNumberTwo = null;
 let moveRacersInterval;
 
 let stopLight = document.getElementById("stoplight");
+let winnerWrapper = document.getElementById("winnerWrapper");
 
 let animate;
 let previousMs = 0;
@@ -145,7 +156,7 @@ function addSelectedRacer(racer){
 
 }
 
-function startRace(){
+function raceSetUp(){
     document.getElementById("CharacterSelectionWrapper").style.display = "none";
     setRacers();
     startCountDown();
@@ -246,13 +257,11 @@ function moveRacers(ms) {
 
     if(elementsOverlap(finishLine, racerNumberOne)){
         winner = "Racer One";
-        console.log(racerNumberOne.style.left)
         cancelAnimationFrame(moveRacers);
         displayWinner(winner);
     } 
     else if(elementsOverlap(finishLine, racerNumberTwo)){
         winner = "Racer Two";
-        console.log(racerNumberTwo.style.left)
         cancelAnimationFrame(moveRacers);
         displayWinner(winner);
     }
@@ -287,26 +296,29 @@ function displayWinner(winner){
 
     let winnerText = "";
     let winnerLabel = document.createElement("div");
-
-    stopLight.style.opacity = "30%";
+    let winnerImage;
 
     if(winner == "Racer One"){
         switch(racerNumberOne){
             case yellowRacer:
                 winnerText = "Yellow Wins!";
                 setWinnerLabelColor("yellow", winnerLabel);
+                winnerImage = yellowRacerSide;
                 break;
             case blueRacer:
                 winnerText = "Blue Wins!";
                 setWinnerLabelColor("blue", winnerLabel);
+                winnerImage = blueRacerSide;
                 break;     
             case redRacer:
                 winnerText = "Red Wins!";
                 setWinnerLabelColor("red", winnerLabel);
+                winnerImage = redRacerSide;
                 break; 
             case bronzeRacer:
                 winnerText = "Bronze Wins!";
                 setWinnerLabelColor("#DDAF7A", winnerLabel);
+                winnerImage = bronzeRacerSide;
                 break;
         }
     }
@@ -315,26 +327,32 @@ function displayWinner(winner){
             case yellowRacer:
                 winnerText = "Yellow Wins!";
                 setWinnerLabelColor("yellow", winnerLabel);
+                winnerImage = yellowRacerSide;
                 break;
             case blueRacer:
                 winnerText = "Blue Wins!";
                 setWinnerLabelColor("blue", winnerLabel);
+                winnerImage = blueRacerSide;
                 break;     
             case redRacer:
                 winnerText = "Red Wins!";
                 setWinnerLabelColor("red", winnerLabel);
+                winnerImage = redRacerSide;
                 break; 
             case bronzeRacer:
                 winnerText = "Bronze Wins!";
                 setWinnerLabelColor("#DDAF7A", winnerLabel);
+                winnerImage = bronzeRacerSide;
                 break;
         }
     }
     
     winnerLabel.innerHTML = winnerText;
-    winnerLabel.className = "WinnerLabel";
-    winnerLabel.style.font
-    document.getElementById("countDownWrapper").appendChild(winnerLabel);
+    document.getElementById("winnerLabel").appendChild(winnerLabel);
+    document.getElementById("winnerImageDiv").appendChild(winnerImage);
+    winnerWrapper.style.display = "flex";
+    winnerImage.style.maxWidth = "100%";
+    winnerImage.style.height = "auto";
 }
 
 function setWinnerLabelColor(color, winnerLabel){

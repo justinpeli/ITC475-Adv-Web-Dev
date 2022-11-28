@@ -10,8 +10,19 @@
             <div class="Banner">
                 <h1>Welcome to the Race!</h1>
             </div>
-            <div class="TestBackground">
+            <div class="Background">
                 <div class="CountDownWrapper" id="countDownWrapper"></div>
+                <div class="WinnerWrapper" id="winnerWrapper">
+                    <div class="WinnerContents" id="winnerContents">
+                        <div class="WinnerLabel" id="winnerLabel"></div>
+                        <div class="WinnerInfoDiv" id="winnerInfoDiv">
+                            <div class="WinnerImageDiv" id="winnerImageDiv"></div>
+                            <div class="RestartButtonDiv">
+                                <button type="button" class="ChooseNewRacersButton" onclick="location.reload();">CHOOSE NEW RACERS</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="RaceTrack" id="RaceTrack">
                     <div class="RacersWrapper">
                         <div class="RacerOneDiv" id="RacerOne"></div>
@@ -37,19 +48,23 @@
                     <div class="CharacterSelectionContent">
                         <div class="RacerDiv" id="yellowRacerSideView" onclick="addSelectedRacer('yellow');">
                             <img src="Images/Yellow Side View.png" alt="yellow side View" class="SideViewImage">
+                            <div><i>Yellow</i></div>
                         </div>
                         <div class="RacerDiv" id="blueRacerSideView" onclick="addSelectedRacer('blue');">
                             <img src="Images/Blue Side View.png" alt="blue side View" class="SideViewImage">
+                            <div><i>Blue</i></div>
                         </div>
                         <br>
                         <div class="RacerDiv" id="redRacerSideView" onclick="addSelectedRacer('red');">
                             <img src="Images/Red Side View.png" alt="red side View" class="SideViewImage">
+                            <div><i>Red</i></div>
                         </div>
                         <div class="RacerDiv" id="bronzeRacerSideView" onclick="addSelectedRacer('bronze');">
                             <img src="Images/Bronze Side View.png" alt="bronze side View" class="SideViewImage">
+                            <div><i>Bronze</i></div>
                         </div>
                         <div class="ButtonDiv">
-                            <button id="raceButton" onclick="startRace()" disabled><b>RACE!</b></button>
+                            <button id="raceButton" onclick="raceSetUp();" disabled><b>RACE!</b></button>
                         </div>
                     </div>
                 </div>
