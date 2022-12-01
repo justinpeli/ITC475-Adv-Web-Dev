@@ -38,6 +38,12 @@ let winnerWrapper = document.getElementById("winnerWrapper");
 let animate;
 let previousMs = 0;
 
+// Variables to pass to database
+let winnerDBValue;
+let timestamp;
+let racerParticipantOne;
+let racerParticipantTwo;
+
 function addSelectedRacer(racer){
 
     switch(racer){
@@ -183,6 +189,8 @@ function addRacersToGUI(){
     racerNumberOne = racers[0];
     racerNumberTwo = racers[1];
 
+    setRacerParticipantsForDB(racerNumberOne, racerNumberTwo);
+
     racerNumberOne.className = "RacerOne";
     racerNumberTwo.className = "RacerTwo";
 
@@ -304,21 +312,25 @@ function displayWinner(winner){
                 winnerText = "Yellow Wins!";
                 setWinnerLabelColor("yellow", winnerLabel);
                 winnerImage = yellowRacerSide;
+                winnerDBValue = "Yellow";
                 break;
             case blueRacer:
                 winnerText = "Blue Wins!";
                 setWinnerLabelColor("blue", winnerLabel);
                 winnerImage = blueRacerSide;
+                winnerDBValue = "Blue";
                 break;     
             case redRacer:
                 winnerText = "Red Wins!";
                 setWinnerLabelColor("red", winnerLabel);
                 winnerImage = redRacerSide;
+                winnerDBValue = "Red";
                 break; 
             case bronzeRacer:
                 winnerText = "Bronze Wins!";
                 setWinnerLabelColor("#DDAF7A", winnerLabel);
                 winnerImage = bronzeRacerSide;
+                winnerDBValue = "Bronze";
                 break;
         }
     }
@@ -328,21 +340,25 @@ function displayWinner(winner){
                 winnerText = "Yellow Wins!";
                 setWinnerLabelColor("yellow", winnerLabel);
                 winnerImage = yellowRacerSide;
+                winnerDBValue = "Yellow";
                 break;
             case blueRacer:
                 winnerText = "Blue Wins!";
                 setWinnerLabelColor("blue", winnerLabel);
                 winnerImage = blueRacerSide;
+                winnerDBValue = "Blue";
                 break;     
             case redRacer:
                 winnerText = "Red Wins!";
                 setWinnerLabelColor("red", winnerLabel);
                 winnerImage = redRacerSide;
+                winnerDBValue = "Red";
                 break; 
             case bronzeRacer:
                 winnerText = "Bronze Wins!";
                 setWinnerLabelColor("#DDAF7A", winnerLabel);
                 winnerImage = bronzeRacerSide;
+                winnerDBValue = "Bronze";
                 break;
         }
     }
@@ -353,8 +369,83 @@ function displayWinner(winner){
     winnerWrapper.style.display = "flex";
     winnerImage.style.maxWidth = "100%";
     winnerImage.style.height = "auto";
+
+    sendDataToServer();
 }
 
 function setWinnerLabelColor(color, winnerLabel){
     winnerLabel.style.color = color;
+}
+
+function sendDataToServer(){
+    /*
+    let form = document.createElement("form");
+    form.method = "POST";
+    form.action = ""; 
+
+    let winnerElement = document.createElement("input"); 
+    winnerElement.value = winner;
+    winnerElement.name = "winner";
+
+    form.appendChild(winnerElement);
+    document.body.appendChild(form);
+    form.submit();
+    */
+
+    let xhr = new XMLHttpRequest();
+
+    // Data to send to server
+    // - timestamp of when race took place
+    // - which racers competed
+    // - who won the race
+
+    // get the current timestamp
+    timestamp = new Date().toISOString().slice(0, 19).replace('T', ' ');
+    
+    let params = "timestamp="+timestamp+"&participantOne="+racerParticipantOne+
+        "&partipantTwo="+racerParticipantTwo+"&winner="+winnerDBValue;
+    
+    xhr.open('POST', 'Process Statistics.php', true);
+
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+    xhr.onload = function(){
+        console.log(this.responseText);
+    }
+
+    xhr.send(params);
+}
+
+function setRacerParticipantsForDB(racerOne, racerTwo){
+    switch(racerOne){
+        case yellowRacer:
+            racerParticipantOne = "Yellow";
+            break;
+        case blueRacer:
+            racerParticipantOne = "Blue";
+            break;
+        case redRacer:
+            racerParticipantOne = "Red";
+            break;
+        case bronzeRacer:
+            racerParticipantOne = "Bronze";
+            break;
+    }
+    switch(racerTwo){
+        case yellowRacer:
+            racerParticipantTwo = "Yellow";
+            break;
+        case blueRacer:
+            racerParticipantTwo = "Blue";
+            break;
+        case redRacer:
+            racerParticipantTwo = "Red";
+            break;
+        case bronzeRacer:
+            racerParticipantTwo = "Bronze";
+            break;
+    }
+
+    console.log(racerParticipantOne);
+    console.log(racerParticipantTwo);
 }
