@@ -88,15 +88,37 @@ body{
     font-style: italic;
     background-color: #8CBEFB;
     border-radius: 0px 0px 30px 30px;
+}
+
+.BannerWrapper{
+    width: 100%;
+    height: 100%;
+}
+
+.BannerText{
+    width: 100%;
+    height: 70%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-h1{
-    font-size: 56pt;
+.Link{
+    height: 30%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+a{
+    font-size: 16pt;
     color: white;
-    padding: 20px;
+}
+
+h1{
+    color: white;
+    font-size: 56pt;
 }
 
 .RacerDiv{
@@ -298,19 +320,6 @@ button{
 .ChooseNewRacersButton{
     background-color: grey;
     color: white;
-}
-
-th{
-    border:1px solid black;
-    background-color: aquamarine;
-    padding: 15px;
-    margin: 0;
-}
-
-td{
-    border:1px solid black;
-    padding: 10px;
-    margin: 0;
 }
 
 @media only screen and (max-width: 768px){
