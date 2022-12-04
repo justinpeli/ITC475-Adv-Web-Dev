@@ -378,20 +378,7 @@ function setWinnerLabelColor(color, winnerLabel){
 }
 
 function sendDataToServer(){
-    /*
-    let form = document.createElement("form");
-    form.method = "POST";
-    form.action = ""; 
-
-    let winnerElement = document.createElement("input"); 
-    winnerElement.value = winner;
-    winnerElement.name = "winner";
-
-    form.appendChild(winnerElement);
-    document.body.appendChild(form);
-    form.submit();
-    */
-
+    
     let xhr = new XMLHttpRequest();
 
     // Data to send to server

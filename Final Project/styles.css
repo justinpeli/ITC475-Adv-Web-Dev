@@ -19,7 +19,6 @@ body{
 }
 
 .CountDownWrapper{
-    z-index: 4;
     width: 100%;
     height: 100%;
     z-index: 2;
@@ -31,10 +30,9 @@ body{
 }
 
 .WinnerWrapper{
-    z-index: 4;
+    z-index: 2;
     width: 100%;
     height: 100%;
-    z-index: 2;
     position: absolute;
     top: 0;
     display: none;
@@ -114,6 +112,7 @@ body{
 a{
     font-size: 16pt;
     color: white;
+    z-index: 3;
 }
 
 h1{

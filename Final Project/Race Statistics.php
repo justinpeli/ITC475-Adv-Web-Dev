@@ -8,31 +8,21 @@ $dbName = "final_project";
 // connection to database
 $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
 
-$sqlSelect = "";
+$sqlSelect = "select * from race order by RacerId desc limit 5;";
 $error = false;
 
 if(isset($_POST['searchButton'])){
     if(isset($_POST['racerOneSelect']) && isset($_POST['racerTwoSelect'])){
         if($_POST['racerOneSelect'] == $_POST['racerTwoSelect']){
             $error = true;
-            $sqlSelect = "select * from race order by RacerId desc limit 5;";
         }
         else{
             $racerOneSearchSelection = $_POST['racerOneSelect'];
             $racerTwoSearchSelection = $_POST['racerTwoSelect'];
             $sqlSelect = "select * from race where RacerOne = '$racerOneSearchSelection'
-            and RacerTwo = '$racerTwoSearchSelection';";
+            and RacerTwo = '$racerTwoSearchSelection' order by RacerId desc limit 10;";
         }
     }
-    else {
-        $sqlSelect = "select * from race order by RacerId desc limit 5;";
-    }
-}
-else if(isset($_POST['seeAllButton'])){
-    $sqlSelect = "select * from race order by RacerId desc limit 5;";
-}
-else {
-    $sqlSelect = "select * from race order by RacerId desc limit 5;";
 }
 
 $result = mysqli_query($conn, $sqlSelect);
@@ -46,7 +36,6 @@ $resultCheck = mysqli_num_rows($result);
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Race Statistics</title>
-        <!--<link rel="stylesheet" href="styles.css">-->
         <link rel="stylesheet" href="race styles.css">
     </head>
     <body>
@@ -71,7 +60,7 @@ $resultCheck = mysqli_num_rows($result);
                                 <option value="Bronze">Bronze</option>
                             </select>
                             <input type="submit" name="searchButton" value="Search" class="SearchButton">
-                            <input type="submit" name="seeAllButton" value="See All Races" class="SearchButton">
+                            <input type="submit" name="seeAllButton" value="Clear" class="SearchButton">
                         </form>
                     </div>
                 </div>
@@ -81,6 +70,12 @@ $resultCheck = mysqli_num_rows($result);
                 <?php
                     if($error == true){
                         echo "<div class = 'errorClass'>Error! Enter Two Separate Racers.</div>";
+                    }
+                    function formatDate($datetimeFromMysql){
+                        $originalDate = new DateTime($datetimeFromMysql);
+                        $originalDate->setTimeZone(new DateTimeZone('CST'));
+                        $newFormattedDate = $originalDate->format("m/d/y g:i A");
+                        return $newFormattedDate;
                     }
                 ?>
                 <table>
@@ -99,7 +94,7 @@ $resultCheck = mysqli_num_rows($result);
                                     echo "
                                         <tr>
                                             <td>".$row['RacerId']."</td>
-                                            <td>".$row['RaceTime']."</td>
+                                            <td>".formatDate($row['RaceTime'])."</td>
                                             <td>".$row['RacerOne']."</td>
                                             <td>".$row['RacerTwo']."</td>
                                             <td>".$row['RaceWinner']."</td>
